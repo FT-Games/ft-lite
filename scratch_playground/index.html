@@ -160,19 +160,20 @@
    ">
    Back to Homepage
 </a>
-<a href="https://ftgames.xyz/scratch_playground/instructions"
-   style="
-      position:fixed;
-      top:0;
-      left:0;
-      color:white;
-      font-size:12px;
-      font-family:Arial,sans-serif;
-      text-decoration:none;
-      z-index:999999;
-   ">
-   Instructions
-</a>
+<div id="instructionsButton"
+     style="
+        position:fixed;
+        top:0;
+        left:0;
+        color:white;
+        font-size:12px;
+        font-family:Arial,sans-serif;
+        cursor:pointer;
+        z-index:999999;
+        padding:2px 4px;
+     ">
+     Instructions
+</div>
   <div id="app"></div>
 
   <div id="launch" class="screen" hidden title="Click to start">
@@ -367,6 +368,22 @@
       }
     };
     run().catch(handleError);
+  </script>
+  <script>
+    const run = async () => {
+      ...
+    };
+    run().catch(handleError);
+  </script>
+
+  <script>
+  document.getElementById("instructionsButton").addEventListener("click", () => {
+      window.open(
+          "https://ftgames.xyz/scratch_playground/instructions",
+          "instructions",
+          "width=800,height=600,resizable=yes,scrollbars=yes"
+      );
+  });
   </script>
 </body>
 </html>
