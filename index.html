@@ -11,7 +11,37 @@
     <img src="images/splash.png" alt="Splash Screen">
 </div>
 
+<button id="themeToggle">🌙</button>
+
 <style>
+  #themeToggle {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100000;
+
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode {
+    background: #1a1a1a;
+    color: white;
+}
+
+body.dark-mode #themeToggle {
+    background: rgba(50,50,50,0.9);
+}
   body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -45,6 +75,54 @@ window.addEventListener("load", () => {
             splash.remove();
         }, 500);
     }, 3000);
+});
+
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie =
+        name + "=" + value +
+        "; expires=" + date.toUTCString() +
+        "; path=/";
+}
+
+function getCookie(name) {
+    const cookieName = name + "=";
+    const cookies = document.cookie.split(";");
+
+    for (let c of cookies) {
+        c = c.trim();
+        if (c.indexOf(cookieName) === 0) {
+            return c.substring(cookieName.length);
+        }
+    }
+
+    return "";
+}
+
+const button = document.getElementById("themeToggle");
+
+function applyTheme(theme) {
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+        button.textContent = "☀️";
+    } else {
+        document.body.classList.remove("dark-mode");
+        button.textContent = "🌙";
+    }
+}
+
+const savedTheme = getCookie("theme");
+applyTheme(savedTheme === "dark" ? "dark" : "light");
+
+button.addEventListener("click", () => {
+    if (document.body.classList.contains("dark-mode")) {
+        applyTheme("light");
+        setCookie("theme", "light", 365);
+    } else {
+        applyTheme("dark");
+        setCookie("theme", "dark", 365);
+    }
 });
 </script>
     
