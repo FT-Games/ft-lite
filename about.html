@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - FT Games</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 16px 24px;
+
+            background: rgba(30, 30, 30, 0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .about-title {
+                font-size: 2.5rem;
+            }
+
+            .about-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">FT Games</a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 class="about-title">
+            About us
+        </h1>
+
+        <div class="about-text">
+            We're 3 year 7 students who made an unblocked games website, because we wanted to make gaming easy and accessible for students.<br>
+            With some help from TurboWarp, GitHub, and Homebase, we made games that are extremely hard to block and detect, with local static game rendering we make games that are both fun to play, and accessible from (almost) anywhere<br>
+            We're FT Games, and we give you an ever-expanding library of great games that you can use from anywhere. All in one place.
+        </div>
+
+    </div>
+
+</body>
+</html>
