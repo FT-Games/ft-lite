@@ -146,34 +146,6 @@
   
 </head>
 <body>
-  <a href="https://ftgames.xyz/games"
-   style="
-      position:fixed;
-      top:0;
-      right:0;
-      color:white;
-      font-size:12px;
-      font-family:Arial,sans-serif;
-      text-decoration:none;
-      z-index:999999;
-      padding:2px 4px;
-   ">
-   Back to Homepage
-</a>
-  <div id="instructionsButton"
-     style="
-        position:fixed;
-        top:0;
-        left:0;
-        color:white;
-        font-size:12px;
-        font-family:Arial,sans-serif;
-        cursor:pointer;
-        z-index:999999;
-        padding:2px 4px;
-     ">
-     Instructions
-</div>
   <div id="app"></div>
 
   <div id="launch" class="screen" hidden title="Click to start">
@@ -275,9 +247,37 @@
         where: 'top-left'
       });
 
+      const pauseButton = document.createElement('img');
+      pauseButton.className = 'control-button control-button-highlight pause-button';
+      pauseButton.draggable = false;
+      let isPaused = false;
+      pauseButton.addEventListener('click', () => {
+        vm.setPaused(!isPaused);
+      });
+      const updatePause = () => {
+        if (isPaused) {
+          pauseButton.src = 'data:image/svg+xml,' + encodeURIComponent('<svg width="16" height="16" viewBox="0 0 4.2333332 4.2333335" xmlns="http://www.w3.org/2000/svg"><path d="m3.95163484 2.02835365-1.66643921.9621191-1.66643913.96211911V.10411543l1.66643922.9621191z" fill="#ffae00"/></svg>');
+        } else {
+          pauseButton.src = 'data:image/svg+xml,' + encodeURIComponent('<svg width="16" height="16" viewBox="0 0 4.2333332 4.2333335" xmlns="http://www.w3.org/2000/svg"><g fill="#ffae00"><path d="M.389.19239126h1.2631972v3.8485508H.389zM2.5810001.19239126h1.2631972v3.8485508H2.5810001z"/></g></svg>');
+        }
+      };
+      vm.runtime.on('RUNTIME_PAUSED', () => {
+        isPaused = true;
+        updatePause();
+      });
+      vm.runtime.on('RUNTIME_UNPAUSED', () => {
+        isPaused = false;
+        updatePause();
+      });
+      updatePause();
+      scaffolding.addControlButton({
+        element: pauseButton,
+        where: 'top-left'
+      });
+
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(true);
-      if (vm.setFramerate) vm.setFramerate(35);
+      if (vm.setFramerate) vm.setFramerate(30);
       if (vm.renderer.setUseHighQualityRender) vm.renderer.setUseHighQualityRender(false);
       if (vm.setRuntimeOptions) vm.setRuntimeOptions({
         fencing: true,
@@ -294,7 +294,7 @@
       if (vm.runtime.setEnforcePrivacy) vm.runtime.setEnforcePrivacy(false);
 
       if (typeof ScaffoldingAddons !== 'undefined') {
-        ScaffoldingAddons.run(scaffolding, {"gamepad":false,"pointerlock":false,"specialCloudBehaviors":false,"unsafeCloudBehaviors":false,"pause":false});
+        ScaffoldingAddons.run(scaffolding, {"gamepad":false,"pointerlock":false,"specialCloudBehaviors":false,"unsafeCloudBehaviors":false,"pause":true});
       }
 
       scaffolding.setExtensionSecurityManager({
@@ -368,15 +368,6 @@
       }
     };
     run().catch(handleError);
-  </script>
-   <script>
-  document.getElementById("instructionsButton").addEventListener("click", () => {
-      window.open(
-          "https://ftgames.xyz/flappy_aeroplane/instructions",
-          "instructions",
-          "width=800,height=600,resizable=yes,scrollbars=yes"
-      );
-  });
   </script>
 </body>
 </html>
