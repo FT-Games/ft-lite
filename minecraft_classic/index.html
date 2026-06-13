@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Classic - FT Games</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="https://ftgames.xyz/games"
+   style="
+      position:fixed;
+      top:0;
+      right:0;
+      color:white;
+      font-size:12px;
+      font-family:Arial,sans-serif;
+      text-decoration:none;
+      z-index:999999;
+      padding:2px 4px;
+   ">
+   Back to Homepage
+</a>
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>FT Games</p>
+    </div>
+    
+    <div id="toast-notification"></div>
+
+    <div class="app-container">
+        <nav class="side-panel">
+            <button class="icon-button" id="settings-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M12 2.69l.346.666L19.5 15.3l-1.414 1.414L12 10.414l-6.086 6.3L4.5 15.3l7.154-11.944L12 2.69zm0 18.62l-7.154-11.944L4.5 8.7l6.086 6.3L12 18.586l1.414-1.586 6.086-6.3.346-.666L12 21.31zM12 2.69L4.5 15.3h15L12 2.69z"/></svg>
+            </button>
+            <button class="icon-button" id="info-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+            <button class="icon-button" id="fullscreen-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+            </button>
+        </nav>
+
+        <div id="game-wrapper">
+            <iframe 
+                id="minecraft-container"
+                src="https://classic.minecraft.net/"
+                title="Minecraft Classic Game"
+                allow="fullscreen; clipboard-write; pointer-lock"
+            ></iframe>
+            <div id="iframe-error" class="iframe-error-message">
+                <h3>Oops! Could Not Load Game</h3>
+                <p>The Minecraft Classic service may be unavailable or has blocked embedding. Please try again later.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" data-close-modal="settings-modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <div class="modal-header"><h2>Color Palette</h2></div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <label>Accent Color</label>
+                    <div class="color-palette" id="color-palette">
+                        <div class="color-swatch active" style="background-color: hsl(186, 100%, 50%);" data-color="hsl(186, 100%, 50%)"></div>
+                        <div class="color-swatch" style="background-color: hsl(260, 100%, 65%);" data-color="hsl(260, 100%, 65%)"></div>
+                        <div class="color-swatch" style="background-color: hsl(340, 100%, 60%);" data-color="hsl(340, 100%, 60%)"></div>
+                        <div class="color-swatch" style="background-color: hsl(120, 100%, 45%);" data-color="hsl(120, 100%, 45%)"></div>
+                        <div class="color-swatch" style="background-color: hsl(45, 100%, 55%);" data-color="hsl(45, 100%, 55%)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" data-close-modal="info-modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            <div class="modal-header"><h2>Controls</h2></div>
+            <div class="modal-body">
+                <p style="text-align: center; color: var(--text-color-muted); margin-top: -1.5rem; margin-bottom: 2rem;">Click the game window to begin.</p>
+                <div class="controls-showcase">
+                    <div class="control-row">
+                        <span class="control-label">Movement</span>
+                        <div class="key-group">
+                            <div class="wasd-grid">
+                                <div class="key wasd-w">W</div>
+                                <div class="key wasd-a">A</div>
+                                <div class="key wasd-s">S</div>
+                                <div class="key wasd-d">D</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Jump</span>
+                        <div class="key-group">
+                            <div class="key large">Space</div>
+                        </div>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Destroy / Place Block</span>
+                        <div class="key-group">
+                            <div class="key">LMB</div>
+                            <div class="key">RMB</div>
+                        </div>
+                    </div>
+                    <div class="control-row">
+                        <span class="control-label">Block Menu / Toggle Fog</span>
+                        <div class="key-group">
+                            <div class="key">B</div>
+                            <div class="key">F</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
+
