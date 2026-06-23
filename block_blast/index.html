@@ -141,40 +141,40 @@
       background-color: #e25b27;
     }
 
-    .ft-btn{
-    position:fixed;
-    bottom:18px;
-    padding:12px 24px;
+    a[href="https://ftgames.xyz/games"],
+#instructionsButton{
+    top:auto !important;
+    bottom:18px !important;
+
+    padding:12px 24px !important;
 
     background:#111;
-    color:#fff;
-
     border:2px solid #00e5ff;
     border-radius:999px;
 
-    font-family:Arial,sans-serif;
-    font-size:14px;
-    font-weight:bold;
+    color:#fff !important;
 
-    text-decoration:none;
-    cursor:pointer;
+    font-family:'Segoe UI',Arial,sans-serif !important;
+    font-size:15px !important;
+    font-weight:700;
 
-    z-index:999999;
-
-    transition:all .25s ease;
+    transition:.25s;
 }
 
-.ft-home{
+a[href="https://ftgames.xyz/games"]{
     left:18px;
+    right:auto !important;
 }
 
-.ft-info{
+#instructionsButton{
     right:18px;
+    left:auto !important;
 }
 
-.ft-btn:hover{
+a[href="https://ftgames.xyz/games"]:hover,
+#instructionsButton:hover{
     background:linear-gradient(90deg,#00e5ff,#00ff99);
-    color:#000;
+    color:#000 !important;
     transform:translateY(-2px);
     box-shadow:0 0 18px rgba(0,255,170,.4);
 }
