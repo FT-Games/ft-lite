@@ -98,6 +98,20 @@
    ">
    Back to Homepage
 </a>
+    <div id="instructionsButton"
+     style="
+        position:fixed;
+        top:0;
+        left:0;
+        color:white;
+        font-size:12px;
+        font-family:Arial,sans-serif;
+        cursor:pointer;
+        z-index:999999;
+        padding:2px 4px;
+     ">
+     Instructions
+</div>
     <div class="overlay" id="promptOverlay">
         <div class="prompt-box">
             <div class="prompt-title">
@@ -139,7 +153,7 @@
  <script>
   document.getElementById("instructionsButton").addEventListener("click", () => {
       window.open(
-          "https://ftgames.xyz/f111_game/instructions",
+          "https://ftgames.xyz/minecraft_classic/instructions",
           "instructions",
           "width=800,height=600,resizable=yes,scrollbars=yes"
       );
