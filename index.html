@@ -82,7 +82,7 @@
 
 
         
-.play-button {
+.play-button, .donate-button {
     display: inline-block;
 
     padding: 16px 48px;
@@ -119,33 +119,12 @@
     justify-content: center;
 }
 
-.donate-button {
-    display: inline-block;
-
-    padding: 16px 48px;
-
-    font-size: 1.3rem;
-    font-weight: bold;
-
-    color: white;
-    text-decoration: none;
-
-    background: #ff4fa3;
-
-    border-radius: 14px;
-
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
 
 .donate-button:hover {
     transform: translateY(-3px);
     opacity: 0.9;
 }
-.play-button:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
-    animation: button-move, 1s, ease-in-out;
-}
+
 
 @keyframes button-move{
  0%{
