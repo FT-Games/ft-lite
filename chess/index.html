@@ -97,20 +97,41 @@
     @media(max-width:600px){ #chess-board{ max-width:100%; } .piece{ font-size:1.95rem; } .controls{ flex-direction:column; } }
 #homeButton,
 #instructionsButton{
-    /* all the FT Games button styling */
+    position:fixed;
+    top:20px;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 22px;
+    background:#111;
+    color:#fff;
+    text-decoration:none;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    font-size:16px;
+    border:2px solid #00e5ff;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 0 12px rgba(0,229,255,.3);
 }
 
 #homeButton{
-    right:0;
+    left:20px;
 }
 
 #instructionsButton{
-    left:0;
+    right:20px;
 }
 
 #homeButton:hover,
-#instructionsButton:hover{
-    /* hover styling */
+#instructionsButton:hover,
+a[href="https://ftgames.xyz/games"]:hover{
+    background:linear-gradient(90deg,#00e5ff,#00ff99);
+    color:#000 !important;
+    box-shadow:0 0 18px rgba(0,255,170,.4);
 }
   </style>
 </head>
