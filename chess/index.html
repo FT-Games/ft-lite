@@ -95,61 +95,22 @@
     #history-table th{ background:#f5f5f5; }
     /* Responsive */
     @media(max-width:600px){ #chess-board{ max-width:100%; } .piece{ font-size:1.95rem; } .controls{ flex-direction:column; } }
-/* FT Games Navigation Buttons */
+#homeButton,
+#instructionsButton{
+    /* all the FT Games button styling */
+}
 
-#instructionsButton,
-a[href="https://ftgames.xyz/games"]{
-    position:fixed;
-    top:0;                 /* Same as original */
-    z-index:999999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-
-    padding:8px 18px;
-
-    background:rgba(17,17,17,.92);
-    border:2px solid #00e5ff;
-    border-radius:0 0 18px 18px;
-
-    color:#fff !important;
-    text-decoration:none;
-
-    font-family:'Segoe UI',Arial,sans-serif;
-    font-size:14px;
-    font-weight:800;
-    letter-spacing:.4px;
-
-    cursor:pointer;
-    user-select:none;
-
-    transition:.25s;
-
-    box-shadow:
-        0 0 15px rgba(0,229,255,.25),
-        inset 0 0 8px rgba(0,229,255,.08);
+#homeButton{
+    right:0;
 }
 
 #instructionsButton{
     left:0;
 }
 
-a[href="https://ftgames.xyz/games"]{
-    right:0;
-}
-
-#instructionsButton:hover,
-a[href="https://ftgames.xyz/games"]:hover{
-    background:linear-gradient(90deg,#00e5ff,#00ff99);
-    color:#000 !important;
-    box-shadow:0 0 24px rgba(0,255,170,.5);
-}
-
-#instructionsButton:active,
-a[href="https://ftgames.xyz/games"]:active{
-    transform:scale(.97);
+#homeButton:hover,
+#instructionsButton:hover{
+    /* hover styling */
 }
   </style>
 </head>
