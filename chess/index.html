@@ -95,6 +95,51 @@
     #history-table th{ background:#f5f5f5; }
     /* Responsive */
     @media(max-width:600px){ #chess-board{ max-width:100%; } .piece{ font-size:1.95rem; } .controls{ flex-direction:column; } }
+      /* FT Games Navigation Buttons */
+
+#instructionsButton,
+a[href="https://ftgames.xyz/games"]{
+    position:fixed;
+    top:20px;
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 22px;
+
+    background:#111;
+    border:2px solid #00e5ff;
+    border-radius:999px;
+
+    color:#fff !important;
+    text-decoration:none;
+
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-size:15px;
+    font-weight:700;
+
+    cursor:pointer;
+    transition:.25s;
+
+    box-shadow:0 0 15px rgba(0,229,255,.25);
+}
+
+#instructionsButton{
+    left:20px;
+}
+
+a[href="https://ftgames.xyz/games"]{
+    right:20px;
+}
+
+#instructionsButton:hover,
+a[href="https://ftgames.xyz/games"]:hover{
+    background:linear-gradient(90deg,#00e5ff,#00ff99);
+    color:#000 !important;
+    box-shadow:0 0 20px rgba(0,255,170,.4);
+}
   </style>
 </head>
 <b<a href="https://ftgames.xyz/games">
