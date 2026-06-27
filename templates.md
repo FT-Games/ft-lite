@@ -1,5 +1,13 @@
 # Template Code Injects
 These are injected into new code for better user experience and accessibility. Make sure to add these before you release a new game.
+
+## Table of Contents
+[Back to Homepage and Instructions buttons](#instructions-and-back-to-homepage-buttons)
+
+[Instructions Page](#instructions-page-code)
+
+[Favicon Code](#favicon-code)
+
 ## Instructions and Back to Homepage Buttons
 These are injected into new game imports for accessibility and user experience. These scripts need to be injected into any new game added to FT Games.
 ### Styling (Paste just before `</style>`)
@@ -145,8 +153,9 @@ This is a template for an instructions page. You need this for every game.
 
 </div>
 ```
-## Favicon Code (Paste just below `<head>`)
+## Favicon Code
 This makes our logo show up in tabs on browsers. It's required on every page.
+### Favicon Code (Paste just below `<head>`)
 ```
 <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 ```
