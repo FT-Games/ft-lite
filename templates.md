@@ -6,6 +6,8 @@ These are injected into new code for better user experience and accessibility. M
 
 [Instructions Page](#instructions-page-code)
 
+[Game Card Code](#game-card-code)
+
 [Favicon Code](#favicon-code)
 
 ## Tips & Tricks
@@ -156,9 +158,21 @@ This is a template for an instructions page. You need this for every game.
 
 </div>
 ```
+## Game Card Code
+### Game Card Code (Paste just before the Suggestion Box game card.)
+This is the code used in games.html, it redirects to your game's page. Make sure to replace all of the placeholders with your actual game resources directory.
+```
+    <a class="game-card" href="/my_game">
+        <img class="game-card-thumbnail" src="thumbnails/my-game-thumbnail.png" alt="My Game thumbnail">
+        <div class="game-card-content">
+          <h2 class="game-card-title">My Game/h2>
+          <p class="game-card-description">My description</p>
+        </div>
+    </a>
+```
 ## Favicon Code
 This makes our logo show up in tabs on browsers. It's required on every page.
-### Favicon Code (Paste just below `<head>`)
+### Favicon Code (Paste somewhere inside `<head>`)
 ```
 <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 ```
