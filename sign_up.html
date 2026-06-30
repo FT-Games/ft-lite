@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Registration Form</title>
  <style>
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -28,20 +28,20 @@ form {
     width: 100%;
     max-width: 450px;
 
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
 
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 18px;
 
     padding: 35px;
 
-    box-shadow: 0 0 30px rgba(124,58,237,0.25);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.25);
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 2rem;
 }
 
@@ -59,7 +59,6 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
-
     padding: 12px 15px;
 
     border: 1px solid rgba(255,255,255,0.15);
@@ -70,16 +69,14 @@ input[type="password"] {
 
     font-size: 1rem;
 
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
     outline: none;
-
     border-color: #7C3AED;
-
     box-shadow: 0 0 15px rgba(124,58,237,0.6);
 }
 
@@ -87,20 +84,46 @@ input::placeholder {
     color: rgba(255,255,255,0.5);
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-    margin-right: 6px;
+/* Radio Buttons */
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
 }
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Checkbox */
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: inline;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+/* Button */
 
 button {
     width: 100%;
-
     padding: 14px;
 
     border: none;
     border-radius: 12px;
 
-    background: #2d7cff;
+    background: #2D7CFF;
     color: white;
 
     font-size: 1.1rem;
@@ -108,7 +131,7 @@ button {
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 
     box-shadow: 0 0 20px rgba(45,124,255,0.4);
 }
@@ -121,6 +144,8 @@ button:hover {
         0 0 50px rgba(45,124,255,0.3);
 }
 
+/* Links */
+
 a {
     color: #9B7CFF;
     text-decoration: none;
@@ -130,6 +155,8 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Mobile */
+
 @media (max-width: 500px) {
     form {
         padding: 25px;
@@ -137,6 +164,11 @@ a:hover {
 
     h2 {
         font-size: 1.6rem;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
     }
 }
   </style>
