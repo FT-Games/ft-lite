@@ -4,265 +4,537 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FT Games</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="style.css">
+    
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* =========================
+   FT Games - style.css
+========================= */
 
-        body {
-            background: linear-gradient(135deg, #0A0A0A 0%, #5B21B6 50%, #111827 100%);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* NAVBAR */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: rgba(30, 30, 30, 0.9);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
+    background: linear-gradient(135deg, #0A0A0A 0%, #5B21B6 50%, #111827 100%);
+    color: white;
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-        }
+    min-height: 100vh;
 
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
+    transition:
+        background 0.8s ease-in-out,
+        color 0.8s ease-in-out;
+}
 
-        .sign-up {
-            padding: 5px;
-            border: 1px solid white;
-            border-radius: 5px;
-        }
+/* LIGHT MODE */
 
-        /* HERO */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: calc(100vh - 70px);
-            padding: 20px;
-        }
+body.light-mode {
+    background: linear-gradient(135deg, #F8FAFC 0%, #DDD6FE 50%, #E2E8F0 100%);
+    color: #111827;
+}
 
-        .hero h1 {
-            font-size: clamp(3rem, 7vw, 5rem);
-            margin-bottom: 24px;
-        }
+/* =========================
+        NAVBAR
+========================= */
 
-        .description {
-            max-width: 700px;
-            font-size: 1.25rem;
-            line-height: 1.6;
-            opacity: 0.8;
-            margin-bottom: 40px;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        /* BUTTONS */
-        .button-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    padding: 18px 40px;
 
-        .play-button {
-            display: inline-block;
-            padding: 16px 48px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            background: #2d7cff;
-            border-radius: 14px;
-            box-shadow: 0 0 15px rgba(45, 124, 255, 0.6);
-            transition: all 0.3s ease;
-        }
+    background: rgba(20,20,20,0.85);
 
-        .donate-button {
-            display: inline-block;
-            padding: 16px 48px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            background: #b500bc;
-            border-radius: 14px;
-            box-shadow: 0 0 15px rgba(181, 0, 188, 0.6);
-            transition: all 0.3s ease;
-        }
+    backdrop-filter: blur(10px);
 
-        .play-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 25px rgba(45, 124, 255, 0.8);
-        }
+    border-bottom: 1px solid rgba(255,255,255,.08);
 
-        .donate-button:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-        /* GAMES SECTION */
-        .games {
-            padding: 80px 20px;
-            text-align: center;
-        }
+    transition: .8s ease;
+}
 
-        .games h2 {
-            margin-bottom: 20px;
-        }
+body.light-mode .navbar{
+    background: rgba(255,255,255,.8);
+}
 
-        .game-grid {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 40px 20px;
-        }
+.logo{
+    color: inherit;
+    text-decoration: none;
 
-        .game-card {
-            width: 220px;
-            padding: 20px;
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            text-align: center;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s ease;
-        }
+    font-size:1.8rem;
+    font-weight:700;
+}
 
-        .game-card h3 {
-            margin-bottom: 10px;
-        }
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
 
-        .game-card p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
+.nav-links a{
+    color:inherit;
+    text-decoration:none;
+    transition:.3s;
+}
 
-        .game-card:hover {
-            transform: translateY(-6px);
-            background: rgba(124, 58, 237, 0.2);
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
-        }
+.nav-links a:hover{
+    opacity:.7;
+}
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
+.signup-btn{
 
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
+    border:1px solid currentColor;
+    border-radius:8px;
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    padding:8px 14px;
+}
 
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                gap: 12px;
-            }
-        }
-    </style>
+/* =========================
+      THEME BUTTON
+========================= */
+
+.theme-button{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#2D7CFF;
+    color:white;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:.3s;
+
+    box-shadow:0 0 20px rgba(45,124,255,.4);
+
+}
+
+.theme-button:hover{
+
+    transform:rotate(20deg) scale(1.08);
+
+}
+
+/* =========================
+        HERO
+========================= */
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+}
+
+.hero-content{
+
+    max-width:800px;
+
+}
+
+.hero h1{
+
+    font-size:clamp(3rem,7vw,5.5rem);
+
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+    opacity:.85;
+
+    margin-bottom:40px;
+
+}
+
+/* =========================
+      BUTTONS
+========================= */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.play-button,
+.donate-button{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:16px 42px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.play-button{
+
+    background:#2D7CFF;
+
+    box-shadow:0 0 20px rgba(45,124,255,.45);
+
+}
+
+.play-button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 30px rgba(45,124,255,.8);
+
+}
+
+.donate-button{
+
+    background:#7C3AED;
+
+    box-shadow:0 0 20px rgba(124,58,237,.4);
+
+}
+
+.donate-button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 30px rgba(124,58,237,.8);
+
+}
+
+/* =========================
+      FEATURED GAMES
+========================= */
+
+.featured{
+
+    padding:90px 30px;
+
+}
+
+.featured h2{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+    font-size:2.5rem;
+
+}
+
+.game-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:30px;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
+.game-card{
+
+    text-decoration:none;
+
+    color:inherit;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.35s;
+
+}
+
+body.light-mode .game-card{
+
+    background:white;
+
+}
+
+.game-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 0 30px rgba(124,58,237,.35);
+
+}
+
+.game-icon{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+.game-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.game-card p{
+
+    opacity:.75;
+
+    line-height:1.6;
+
+}
+
+/* =========================
+        FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:.7;
+
+}
+
+footer a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* =========================
+        MOBILE
+========================= */
+
+@media (max-width:700px){
+
+.navbar{
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.hero h1{
+
+    font-size:3rem;
+
+}
+
+.hero p{
+
+    font-size:1rem;
+
+}
+
+}
+    
+    
+    
+    
+</style>
 </head>
-
 <body>
 
-<nav class="navbar">
-    <a href="/" class="logo">FT Games</a>
+    <nav class="navbar">
 
-    <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/games">Games</a>
-        <a href="/about">About</a>
-        <a href="/sign_up" class="sign-up">Sign Up</a>
-    </div>
-</nav>
-
-<main class="hero">
-
-    <h1>Made by students, for students</h1>
-
-    <p class="description">
-        FT Games is a collection of games created by a few Year 7 students. We aim to provide experiences that are easy to access and amazing to play from anywhere.
-    </p>
-
-    <div class="button-group">
-        <a href="/games" class="play-button">Play</a>
-
-        <a href="https://donate.stripe.com/4gMeVd0Hd65z6Gs10FaAw00"
-           class="donate-button"
-           target="_blank"
-           rel="noopener noreferrer">
-            Donate
+        <a href="/" class="logo">
+            FT Games
         </a>
-    </div>
 
-    <!-- GAMES SECTION -->
-    <section class="games">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/about">About</a>
+            <a href="/sign_up" class="signup-btn">Sign Up</a>
 
-        <h2>🎮 Featured Games</h2>
-
-        <div class="game-grid">
-
-            <a href="/polytrack" class="game-card">
-                <h3>🏎️ Polytrack</h3>
-                <p>Fast-paced driving game</p>
-            </a>
-
-            <a href="/minecraft_classic" class="game-card">
-                <h3>⛏️ Minecraft</h3>
-                <p>Build anything your imagination can think of</p>
-            </a>
-
-            <a href="/flappy_dunk" class="game-card">
-                <h3>🏀 Flappy Dunk</h3>
-                <p>Dunk the ball as many times as you can. Don't touch the top!</p>
-            </a>
-
+            <button id="themeToggle" class="theme-button">
+                🌙
+            </button>
         </div>
 
-    </section>
+    </nav>
 
-</main>
+    <main>
 
-<footer>
-    <a href="https://tyco.it.com/privacy-policy?back=https://ftgames.xyz" target="_blank">
-        Privacy Policy
-    </a>
-</footer>
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>Made by students,<br>for students.</h1>
+
+                <p>
+                    FT Games is a growing collection of browser games created
+                    by students. Play instantly, compete with friends,
+                    and enjoy fun games anywhere.
+                </p>
+
+                <div class="button-group">
+
+                    <a href="/games" class="play-button">
+                        ▶ Play Now
+                    </a>
+
+                    <a
+                        href="https://donate.stripe.com/4gMeVd0Hd65z6Gs10FaAw00"
+                        class="donate-button"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        ❤️ Donate
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="featured">
+
+            <h2>Featured Games</h2>
+
+            <div class="game-grid">
+
+                <a href="/polytrack" class="game-card">
+
+                    <div class="game-icon">🏎️</div>
+
+                    <h3>Poly Track</h3>
+
+                    <p>Race around fast-paced tracks and beat your best time.</p>
+
+                </a>
+
+                <a href="/minecraft_classic" class="game-card">
+
+                    <div class="game-icon">⛏️</div>
+
+                    <h3>Minecraft Classic</h3>
+
+                    <p>Build anything your imagination can think of.</p>
+
+                </a>
+
+                <a href="/flappy_dunk" class="game-card">
+
+                    <div class="game-icon">🏀</div>
+
+                    <h3>Flappy Dunk</h3>
+
+                    <p>Score as many baskets as possible without hitting the top.</p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <a href="https://tyco.it.com/privacy-policy" target="_blank">
+            Privacy Policy
+        </a>
+
+    </footer>
+
+    <script src="script.js">
+    // ==========================
+// FT Games - Theme Toggle
+// ==========================
+
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    body.classList.add("light-mode");
+    themeToggle.textContent = "☀️";
+} else {
+    themeToggle.textContent = "🌙";
+}
+
+// Toggle theme
+themeToggle.addEventListener("click", () => {
+
+    body.classList.toggle("light-mode");
+
+    if (body.classList.contains("light-mode")) {
+
+        themeToggle.textContent
+   
+    </script>
 
 </body>
 </html>
