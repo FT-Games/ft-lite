@@ -512,47 +512,46 @@ footer a:hover{
 
         </section>
 
-        <!-- Favorites section will be inserted here by script -->
+        
 
     </main>
 
     <footer>
 
-        <a href="https://tyco.it.com/privacy-policy" target="_blank">
+        <a href="https://tyco.it.com/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy Policy
         </a>
 
     </footer>
 
-    <script src="script.js">
+    <script>
     // ==========================
-// FT Games - Theme Toggle
-// ==========================
+    // FT Games - Theme Toggle
+    // ==========================
+    const themeToggle = document.getElementById("themeToggle");
+    const body = document.body;
 
-const themeToggle = document.getElementById("themeToggle");
-const body = document.body;
+    const savedTheme = localStorage.getItem("theme");
 
-// Load saved theme
-const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      body.classList.add("light-mode");
+      themeToggle.textContent = "☀️";
+    } else {
+      themeToggle.textContent = "🌙";
+    }
 
-if (savedTheme === "light") {
-    body.classList.add("light-mode");
-    themeToggle.textContent = "☀️";
-} else {
-    themeToggle.textContent = "🌙";
-}
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
 
-// Toggle theme
-themeToggle.addEventListener("click", () => {
-
-    body.classList.toggle("light-mode");
-
-    if (body.classList.contains("light-mode")) {
-
-        themeToggle.textContent
-   
+      if (body.classList.contains("light-mode")) {
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "light");
+      } else {
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "dark");
+      }
+    });
     </script>
-
 
 <script>
 (function(){

@@ -169,7 +169,7 @@ This is the code used in games.html, it redirects to your game's page. Make sure
     <a class="game-card" href="/my_game">
         <img class="game-card-thumbnail" src="thumbnails/my-game-thumbnail.png" alt="My Game thumbnail">
         <div class="game-card-content">
-          <h2 class="game-card-title">My Game/h2>
+          <h2 class="game-card-title">My Game</h2>
           <p class="game-card-description">My description</p>
         </div>
     </a>
