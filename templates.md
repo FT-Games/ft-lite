@@ -12,6 +12,7 @@ These are injected into new code for better user experience and accessibility. M
 
 ## Tips & Tricks
 - Make sure to test your code before commiting, you can do that using [ScriptView](https://ftgames.xyz/scriptview). Our dedicated HTML test viewer.
+- Package Scratch projects using the [TurboWarp Packager](https://packager.turbowarp.org/), if the project is too big to import via GitHub, boot up a [Codespace](https://github.com/codespaces/new?hide_repo_select=true&repo=1256556385&skip_quickstart=true&ref=main) and upload it through Source Control.
 - Use Visual Studio Code when possible as it can automatically fill in code for you, making production move much faster
 - When you use AI to code, always double-check to make sure it has no bugs and follows our release guidelines.
 - These code injects are only templates, make sure to double-check this code and replace any placeholders with your game directory.
