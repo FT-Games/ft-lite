@@ -575,14 +575,6 @@ footer a:hover{
     card.className = 'game-card';
     card.href = id;
 
-    if (catalogEntry && catalogEntry.thumbnail) {
-      const img = document.createElement('img');
-      img.className = 'game-card-thumbnail';
-      img.src = catalogEntry.thumbnail;
-      img.alt = `${catalogEntry.title || 'Game'} thumbnail`;
-      card.appendChild(img);
-    }
-
     const content = document.createElement('div');
     content.className = 'game-card-content';
 
