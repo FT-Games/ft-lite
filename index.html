@@ -440,6 +440,12 @@ footer a:hover{
                     and enjoy fun games anywhere.
                 </p>
 
+                <div id="stats">
+                    <p> 👥 Over 30 fun games to choose from</p> <br>
+                    <p> 🌐 Playable from almost anywhere! </p> <br>
+                    <p> 🔄 New updates to our website every week! </p>
+                    </div>
+
                 <div class="button-group">
 
                     <a href="/games" class="play-button">
@@ -472,7 +478,7 @@ footer a:hover{
 
                     <div class="game-icon">🏎️</div>
 
-                    <h3>Poly Track</h3>
+                    <h3>Polytrack</h3>
 
                     <p>Race around fast-paced tracks and beat your best time.</p>
 
@@ -609,7 +615,7 @@ footer a:hover{
 
     const catalog = getCatalog();
     const gameCardsByHref = new Map(
-      Array.from(document.querySelectorAll('.game-card'))
+      Array.from(document.querySelectorAll('.featured:not(.favorites-section) .game-card'))
         .map((card) => [card.getAttribute('href'), card])
         .filter(([href]) => typeof href === 'string')
     );
@@ -617,7 +623,13 @@ footer a:hover{
     favs.forEach((id)=>{
       const featuredCard = gameCardsByHref.get(id);
       if (featuredCard) {
-        container.appendChild(featuredCard.cloneNode(true));
+        const titleEl = featuredCard.querySelector('h3');
+        const descEl = featuredCard.querySelector('p');
+        const entry = {
+          title: titleEl ? titleEl.textContent : null,
+          description: descEl ? descEl.textContent : null,
+        };
+        container.appendChild(buildFavoriteCard(id, entry));
         return;
       }
 
