@@ -362,6 +362,23 @@ body.dark-mode .modal-content {
     margin-top: 2px;
 }
 
+  #scroll{
+ animation: scroll 2s ease-in-out;
+  animation-timeline: view();
+  animation-range: entry 0 cover 40%;
+}
+
+@keyframes scroll{
+ from{
+  opacity: 0;
+  translate: 100px;
+ }
+ to{
+  opacity: 1;
+  scale: 100px;
+ }
+}
+  
  
 </style>
 
@@ -478,7 +495,7 @@ window.addEventListener("load", () => {
     </a>
     <div class="ad-label">AD</div>
 </div>
-
+<div id="scroll">
     <section id="favorites-section" class="favorites-section" aria-labelledby="favorites-heading">
       <h2 id="favorites-heading">⭐ Favorite Games</h2>
       <div id="favorites-list" class="favorites-list"></div>
@@ -695,6 +712,7 @@ Survive each wave, dodge enemy fire, and rack up the highest score! Thanks to Ro
         </div>
       </a>
     </section>
+</div>
     <footer id="homebaseFooter">
     Powered by Homebase
 </footer>
