@@ -7,7 +7,7 @@ This is the code used for the FT Games website, here's a lil' map to help you na
 This is the source code used for the FT Games website, accessible at https://ftgames.xyz. You can't contribute to this code, but you can create issues and send messages in discussions if you have a GitHub account, otherwise you can just look around.
 
 ### Issues
-If you find a bug or you really, really, really want a specific game on our website, create an issue and we'll get back to you as soon as possible.
+If you find a bug, create an issue and we'll get back to you as soon as possible.
 
 ### Pull requests
 This is the stuff we're actively working on, you can see where we're at with it, see and download the code, and more! (You can't contribute code tho)
