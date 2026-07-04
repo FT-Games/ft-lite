@@ -526,7 +526,27 @@ footer a:hover{
     const themeToggle = document.getElementById("themeToggle");
     const body = document.body;
 
-    const savedTheme = localStorage.getItem("theme");
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    }
+
+    function getCookie(name) {
+      const cookieName = `${name}=`;
+      const cookies = document.cookie.split(";");
+
+      for (let c of cookies) {
+        c = c.trim();
+        if (c.indexOf(cookieName) === 0) {
+          return c.substring(cookieName.length);
+        }
+      }
+
+      return "";
+    }
+
+    const savedTheme = getCookie("theme");
 
     if (savedTheme === "light") {
       body.classList.add("light-mode");
@@ -540,10 +560,10 @@ footer a:hover{
 
       if (body.classList.contains("light-mode")) {
         themeToggle.textContent = "☀️";
-        localStorage.setItem("theme", "light");
+        setCookie("theme", "light", 365);
       } else {
         themeToggle.textContent = "🌙";
-        localStorage.setItem("theme", "dark");
+        setCookie("theme", "dark", 365);
       }
     });
     </script>
