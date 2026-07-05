@@ -108,6 +108,27 @@ body.light-mode .navbar{
     padding:8px 14px;
 }
 
+.username-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2D7CFF;
+  color: white;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(45,124,255,.45);
+}
+
+body.light-mode .username-badge {
+  background: #1D4ED8;
+}
+
+.hidden {
+  display: none;
+}
+
 /* =========================
       THEME BUTTON
 ========================= */
@@ -418,6 +439,7 @@ footer a:hover{
             <a href="/games">Games</a>
             <a href="/about">About</a>
             <a href="/sign_up" class="signup-btn">Sign Up</a>
+          <span id="usernameBadge" class="username-badge hidden" aria-label="Logged in user"></span>
 
             <button id="themeToggle" class="theme-button">
                 🌙
@@ -689,6 +711,13 @@ footer a:hover{
     });
   });
 })();
+</script>
+
+<script type="module">
+import { syncUsernameCookieFromAuth, renderUsernameBadge } from "./firebase-auth.js";
+
+syncUsernameCookieFromAuth();
+renderUsernameBadge("usernameBadge");
 </script>
 
   <script src="analytics-consent.js"></script>

@@ -134,6 +134,26 @@ input[type="password"]:focus {
     margin-bottom: 20px;
 }
 
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.login-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: none;
+}
+
+.status-message {
+    min-height: 22px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #D1D5DB;
+    margin-top: 6px;
+}
+
 /* Button */
 
 button {
@@ -287,30 +307,87 @@ a:hover {
         </div>
 
         
-        <p>
+        <div class="button-row">
             <button type="submit">Create Account</button>
-        </p>
+            <button type="button" id="loginButton" class="login-button">Log In</button>
+        </div>
+
+        <p id="authStatus" class="status-message"></p>
 
     </form>
 
-    <!--
-        Cloudflare Turnstile setup:
-        1) Replace PASTE_YOUR_TURNSTILE_SITE_KEY_HERE with your public site key.
-        2) Add your secret key in Cloudflare Worker secrets as:
-             TURNSTILE_SECRET_KEY="PASTE_YOUR_TURNSTILE_SECRET_KEY_HERE"
-        3) Verify the token server-side with:
-             POST https://challenges.cloudflare.com/turnstile/v0/siteverify
-    -->
-    <script>
+    <script type="module">
+        import { registerWithEmailPassword, loginWithEmailPassword, syncUsernameCookieFromAuth } from "./firebase-auth.js";
+
         const registrationForm = document.querySelector("form");
+        const loginButton = document.getElementById("loginButton");
+        const authStatus = document.getElementById("authStatus");
 
-        registrationForm.addEventListener("submit", function (event) {
+        function showStatus(message, isError) {
+            authStatus.textContent = message;
+            authStatus.style.color = isError ? "#FCA5A5" : "#86EFAC";
+        }
+
+        function hasTurnstileToken() {
             const captchaResponseField = registrationForm.querySelector('input[name="cf-turnstile-response"]');
-            const captchaResponse = captchaResponseField?.value;
+            return Boolean(captchaResponseField && captchaResponseField.value);
+        }
 
-            if (!captchaResponse) {
-                event.preventDefault();
-                alert("Please complete the Turnstile check before creating your account.");
+        function formValues() {
+            const formData = new FormData(registrationForm);
+            return {
+                username: (formData.get("username") || "").toString().trim(),
+                email: (formData.get("email") || "").toString().trim(),
+                password: (formData.get("password") || "").toString()
+            };
+        }
+
+        syncUsernameCookieFromAuth();
+
+        registrationForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            if (!registrationForm.reportValidity()) {
+                return;
+            }
+
+            if (!hasTurnstileToken()) {
+                showStatus("Please complete the Turnstile check first.", true);
+                return;
+            }
+
+            const { username, email, password } = formValues();
+
+            try {
+                showStatus("Creating account...", false);
+                await registerWithEmailPassword(username, email, password);
+                showStatus("Account created. Redirecting...", false);
+                window.location.href = "/";
+            } catch (error) {
+                showStatus(error?.message || "Could not create account.", true);
+            }
+        });
+
+        loginButton.addEventListener("click", async function () {
+            const { email, password } = formValues();
+
+            if (!email || !password) {
+                showStatus("Enter your email and password to log in.", true);
+                return;
+            }
+
+            if (!hasTurnstileToken()) {
+                showStatus("Please complete the Turnstile check first.", true);
+                return;
+            }
+
+            try {
+                showStatus("Logging in...", false);
+                await loginWithEmailPassword(email, password);
+                showStatus("Logged in. Redirecting...", false);
+                window.location.href = "/";
+            } catch (error) {
+                showStatus(error?.message || "Could not log in.", true);
             }
         });
     </script>
