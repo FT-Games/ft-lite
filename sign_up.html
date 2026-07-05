@@ -128,6 +128,12 @@ input[type="password"]:focus {
     line-height: 1.5;
 }
 
+.captcha-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 /* Button */
 
 button {
@@ -273,6 +279,13 @@ a:hover {
 
         </p>
 
+        <div class="captcha-group">
+            <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAADvuiPgjWUgSEA56"
+                data-theme="dark"></div>
+        </div>
+
         
         <p>
             <button type="submit">Create Account</button>
@@ -280,6 +293,28 @@ a:hover {
 
     </form>
 
-  <script src="analytics-consent.js"></script>
+    <!--
+        Cloudflare Turnstile setup:
+        1) Replace PASTE_YOUR_TURNSTILE_SITE_KEY_HERE with your public site key.
+        2) Add your secret key in Cloudflare Worker secrets as:
+             TURNSTILE_SECRET_KEY="PASTE_YOUR_TURNSTILE_SECRET_KEY_HERE"
+        3) Verify the token server-side with:
+             POST https://challenges.cloudflare.com/turnstile/v0/siteverify
+    -->
+    <script>
+        const registrationForm = document.querySelector("form");
+
+        registrationForm.addEventListener("submit", function (event) {
+            const captchaResponseField = registrationForm.querySelector('input[name="cf-turnstile-response"]');
+            const captchaResponse = captchaResponseField?.value;
+
+            if (!captchaResponse) {
+                event.preventDefault();
+                alert("Please complete the Turnstile check before creating your account.");
+            }
+        });
+    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="analytics-consent.js"></script>
 </body>
 </html>
