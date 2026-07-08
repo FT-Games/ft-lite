@@ -316,79 +316,41 @@ a:hover {
 
     </form>
 
-    <script type="module">
-        import { registerWithEmailPassword, loginWithEmailPassword, syncUsernameCookieFromAuth } from "./firebase-auth.js";
-
+    <script>
         const registrationForm = document.querySelector("form");
         const loginButton = document.getElementById("loginButton");
         const authStatus = document.getElementById("authStatus");
 
-        function showStatus(message, isError) {
-            authStatus.textContent = message;
-            authStatus.style.color = isError ? "#FCA5A5" : "#86EFAC";
+        function genderCode(value) {
+            if (value === "male") return "m";
+            if (value === "female") return "f";
+            if (value === "other") return "o";
+            return "";
         }
 
-        function hasTurnstileToken() {
-            const captchaResponseField = registrationForm.querySelector('input[name="cf-turnstile-response"]');
-            return Boolean(captchaResponseField && captchaResponseField.value);
-        }
-
-        function formValues() {
-            const formData = new FormData(registrationForm);
-            return {
-                username: (formData.get("username") || "").toString().trim(),
-                email: (formData.get("email") || "").toString().trim(),
-                password: (formData.get("password") || "").toString()
-            };
-        }
-
-        syncUsernameCookieFromAuth();
-
-        registrationForm.addEventListener("submit", async function (event) {
+        registrationForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
             if (!registrationForm.reportValidity()) {
                 return;
             }
 
-            if (!hasTurnstileToken()) {
-                showStatus("Please complete the Turnstile check first.", true);
-                return;
-            }
+            const formData = new FormData(registrationForm);
+            const params = new URLSearchParams({
+                username: (formData.get("username") || "").toString().trim(),
+                email: (formData.get("email") || "").toString().trim(),
+                pass: (formData.get("password") || "").toString(),
+                gender: genderCode((formData.get("gender") || "").toString())
+            });
 
-            const { username, email, password } = formValues();
+            authStatus.textContent = "Redirecting...";
+            authStatus.style.color = "#86EFAC";
 
-            try {
-                showStatus("Creating account...", false);
-                await registerWithEmailPassword(username, email, password);
-                showStatus("Account created. Redirecting...", false);
-                window.location.href = "/";
-            } catch (error) {
-                showStatus(error?.message || "Could not create account.", true);
-            }
+            window.location.href = "/submit-registration?" + params.toString();
         });
 
-        loginButton.addEventListener("click", async function () {
-            const { email, password } = formValues();
-
-            if (!email || !password) {
-                showStatus("Enter your email and password to log in.", true);
-                return;
-            }
-
-            if (!hasTurnstileToken()) {
-                showStatus("Please complete the Turnstile check first.", true);
-                return;
-            }
-
-            try {
-                showStatus("Logging in...", false);
-                await loginWithEmailPassword(email, password);
-                showStatus("Logged in. Redirecting...", false);
-                window.location.href = "/";
-            } catch (error) {
-                showStatus(error?.message || "Could not log in.", true);
-            }
+        loginButton.addEventListener("click", function () {
+            window.location.href = "/";
         });
     </script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
