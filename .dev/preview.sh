@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Colors
-GREEN="\033[92m"
+GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 WHITE="\033[0;37m"
 BLUE="\033[0;34m"
