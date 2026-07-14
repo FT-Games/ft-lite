@@ -19,12 +19,11 @@ echo -e "${GREEN}██████╔╝██████╔╝█████
 echo -e "${GREEN}██╔═══╝ ██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║${RESET}"
 echo -e "${GREEN}██║     ██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝${RESET}"
 echo -e "${GREEN}╚═╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝${RESET}"
-
-echo -e "${BLUE}Made by FT Games - Version 1.0.0${RESET}"
+echo -e "${BLUE}Version 1.0.0${RESET}"
 echo ""
 
 # WHITE text
-echo -e "${WHITE}Welcome to Preview by FT Games!${RESET}"
+echo -e "${WHITE}Welcome to Preview!${RESET}"
 echo ""
 
 # YELLOW port prompt
