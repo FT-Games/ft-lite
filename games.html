@@ -138,6 +138,9 @@ body.dark-mode #themeToggle {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
     transform: translateY(-4px);
 }
+a.game-card[href="/suggestion_box"] {
+    border: 2px dotted #dddddd;
+}
 .game-card-thumbnail {
     background: #eeeeee;
     height: 160px;
@@ -188,6 +191,9 @@ body.dark-mode .game-tag-difficulty {
 body.dark-mode .game-card {
     border-color: #444444;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+body.dark-mode a.game-card[href="/suggestion_box"] {
+    border-color: #444444;
 }
 body.dark-mode .game-card-thumbnail {
     background: #333333;
@@ -1058,6 +1064,7 @@ Survive each wave, dodge enemy fire, and rack up the highest score! Thanks to Ro
     document.querySelectorAll('.game-card-grid[aria-label="Games"] .game-card').forEach((card) => {
       const id = card.getAttribute('href');
       if (!id) return;
+      if (id === '/suggestion_box') return;
       card.dataset.gameId = id;
 
       const title = card.querySelector('.game-card-title')?.textContent?.trim() || formatFallbackTitle(id);
