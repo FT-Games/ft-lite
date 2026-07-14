@@ -1,3 +1,6 @@
+# Preview created by TyCo Studios, code has been revised for FT Games.
+# This code is licensed under the MIT License. (c) 2026 TyCo Studios. All rights reserved.
+
 #!/bin/bash
 
 # Colors
@@ -17,7 +20,7 @@ echo -e "${GREEN}██╔═══╝ ██╔══██╗██╔══�
 echo -e "${GREEN}██║     ██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝${RESET}"
 echo -e "${GREEN}╚═╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝${RESET}"
 
-echo -e "${BLUE}Made by FT Games - Version 1.0.1 beta${RESET}"
+echo -e "${BLUE}Made by FT Games - Version 1.0.0${RESET}"
 echo ""
 
 # WHITE text
