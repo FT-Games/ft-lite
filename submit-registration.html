@@ -86,11 +86,19 @@
     </main>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const username = params.get("username") || "";
-        const email = params.get("email") || "";
-        const pass = params.get("pass") || "";
-        const gender = params.get("gender") || "";
+        const STORAGE_KEY = "ftgames:pendingRegistration";
+        let registrationData = {};
+        try {
+            registrationData = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
+        } catch (e) {
+            registrationData = {};
+        }
+        sessionStorage.removeItem(STORAGE_KEY);
+
+        const username = registrationData.username || "";
+        const email = registrationData.email || "";
+        const pass = registrationData.pass || "";
+        const gender = registrationData.gender || "";
 
         const hasData = username || email || pass || gender;
         const title = document.getElementById("statusTitle");
@@ -114,8 +122,6 @@
                 description.textContent = value || "-";
                 details.append(term, description);
             });
-
-            history.replaceState(null, "", "/submit-registration");
         } else {
             details.innerHTML = "<dt>Status</dt><dd>No registration data provided.</dd>";
         }
