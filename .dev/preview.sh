@@ -1,25 +1,36 @@
 #!/bin/bash
 
+# Colors
+GREEN="\033[0;32m"
+YELLOW="\033[1;33m"
+WHITE="\033[0;37m"
+BLUE="\033[0;34m"
+RESET="\033[0m"
+
 clear
 
-echo "██████╗ ██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗"
-echo "██╔══██╗██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║"
-echo "██████╔╝██████╔╝█████╗  ██║   ██║██║█████╗  ██║ █╗ ██║"
-echo "██╔═══╝ ██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║"
-echo "██║     ██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝"
-echo "╚═╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝"
-echo "Beta"
-echo ""
-echo "Welcome to Preview by FT Games!"
+# GREEN ASCII ART
+echo -e "${GREEN}██████╗ ██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗"
+echo -e "██╔══██╗██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║"
+echo -e "██████╔╝██████╔╝█████╗  ██║   ██║██║█████╗  ██║ █╗ ██║"
+echo -e "██╔═══╝ ██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║"
+echo -e "██║     ██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝"
+echo -e "╚═╝     ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝${RESET}"
+echo -e "${BLUE}Made by FT Games - Version 1.0.1 beta${RESET}"
 echo ""
 
-echo "Enter port for preview to be hosted on (e.g. 8080):"
+# WHITE text
+echo -e "${WHITE}Welcome to Preview by FT Games!${RESET}"
+echo ""
+
+# YELLOW port prompt
+echo -e "${YELLOW}Enter port for preview to be hosted on (e.g. 8080):${RESET}"
 read port
 
 echo ""
-echo "Server will start on port $port."
-echo "You should see a notification in your code editor."
-echo "Press Ctrl+C to stop the server."
+echo -e "${WHITE}Starting server on port $port...${RESET}"
+echo -e "${WHITE}You should see a notification in your code editor. Press Ctrl+C to stop.${RESET}"
 echo ""
 
+# Start server
 npx http-server -p "$port"
