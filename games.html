@@ -2,18 +2,16 @@
 <html>
   <head>
     <!-- Google Analytics is loaded only after the user consents (see analytics-consent.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FT Games - Games</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   </head>
   <body>
-    <div id="splash-screen">
-    <img src="images/splash.png" alt="Splash Screen">
-</div>
-     
 <nav class="navbar">
     <a href="/" class="logo">FT Games</a>
 
@@ -37,35 +35,37 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 16px 24px;
+    padding: 18px 40px;
 
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,.8);
     backdrop-filter: blur(10px);
 
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,.08);
 
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    transition: .8s ease;
   }
 body.dark-mode .navbar {
-    background: rgba(30,30,30,0.85);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(20,20,20,0.85);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .logo,
 .nav-links a {
-    color: black;
+    color: inherit;
     text-decoration: none;
 }
 
-body.dark-mode .logo,
-body.dark-mode .nav-links a {
-    color: white;
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .nav-links {
     display: flex;
-    gap: 24px;
+    gap: 20px;
 }
 
 .nav-links a {
@@ -87,34 +87,47 @@ body.dark-mode .nav-links a {
     }
 }
  #themeToggle {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
 
     border: none;
-    border-radius: 12px;
+    border-radius: 50%;
 
-    font-size: 24px;
+    font-size: 1rem;
     cursor: pointer;
 
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(8px);
+    background: #2D7CFF;
+    color: white;
+    box-shadow: 0 0 20px rgba(45,124,255,.4);
+
+    transition: .3s;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-body.dark-mode {
-    background: #1a1a1a;
-    color: white;
+#themeToggle:hover {
+    transform: rotate(20deg) scale(1.08);
 }
 
-body.dark-mode #themeToggle {
-    background: rgba(50,50,50,0.9);
+body {
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(135deg, #F8FAFC 0%, #DDD6FE 50%, #E2E8F0 100%);
+    color: #111827;
+
+    min-height: 100vh;
+
+    transition:
+        background 0.8s ease-in-out,
+        color 0.8s ease-in-out;
 }
-  body {
-    font-family: 'Montserrat', sans-serif;
-  }
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0A0A0A 0%, #5B21B6 50%, #111827 100%);
+    color: white;
+}
 .game-card-grid {
     display: grid;
     gap: 20px;
@@ -124,19 +137,25 @@ body.dark-mode #themeToggle {
 .game-card {
     color: inherit;
     text-decoration: none;
-    border: 1px solid #dddddd;
-    border-radius: 16px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.8s ease-in-out, border-color 0.8s ease-in-out;
+}
+body.dark-mode .game-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 .game-card:hover,
 .game-card:focus {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
-    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.35);
+    transform: translateY(-8px);
 }
 a.game-card[href="/suggestion_box"] {
     border: 2px dotted #dddddd;
@@ -188,10 +207,6 @@ body.dark-mode .game-tag-difficulty {
     background: #1a3320;
     color: #81c784;
 }
-body.dark-mode .game-card {
-    border-color: #444444;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
 body.dark-mode a.game-card[href="/suggestion_box"] {
     border-color: #444444;
 }
@@ -234,6 +249,8 @@ body.dark-mode .fav-star {
 .favorites-section h2 {
     margin-bottom: 12px;
     text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 body.dark-mode .favorites-section {
     background: rgba(25, 25, 25, 0.6);
@@ -245,23 +262,61 @@ body.dark-mode .favorites-section {
     text-align: center;
     grid-column: 1 / -1;
 }
-#splash-screen {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100001;
+.game-filter-bar {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    transition: opacity 0.5s ease;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(48, 86, 211, 0.25);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 20px rgba(48, 86, 211, 0.12);
 }
-
-#splash-screen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.game-filter-bar input[type="search"],
+.game-filter-bar select {
+    flex: 1 1 200px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: inherit;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+.game-filter-bar input[type="search"]:focus,
+.game-filter-bar select:focus {
+    outline: none;
+    border-color: #3056d3;
+    box-shadow: 0 0 0 3px rgba(48, 86, 211, 0.2);
+}
+body.dark-mode .game-filter-bar {
+    background: rgba(25, 25, 25, 0.6);
+    border-color: rgba(160, 184, 255, 0.35);
+    box-shadow: 0 10px 26px rgba(160, 184, 255, 0.15);
+}
+body.dark-mode .game-filter-bar input[type="search"],
+body.dark-mode .game-filter-bar select {
+    background: rgba(50, 50, 50, 0.9);
+    border-color: #444444;
+    color: white;
+}
+body.dark-mode .game-filter-bar input[type="search"]:focus,
+body.dark-mode .game-filter-bar select:focus {
+    border-color: #a0b8ff;
+    box-shadow: 0 0 0 3px rgba(160, 184, 255, 0.25);
+}
+.is-hidden {
+    display: none !important;
+}
+@media (max-width: 600px) {
+    .game-filter-bar {
+        flex-direction: column;
+    }
+    .game-filter-bar input[type="search"],
+    .game-filter-bar select {
+        flex-basis: auto;
+    }
 }
 #homebaseFooter {
     position: fixed;
@@ -277,25 +332,29 @@ body.dark-mode .favorites-section {
 }
 
 #supportButton {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
 
     border: none;
-    border-radius: 12px;
+    border-radius: 50%;
 
-    font-size: 24px;
+    font-size: 1rem;
     cursor: pointer;
 
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(8px);
+    background: #7C3AED;
+    color: white;
+    box-shadow: 0 0 20px rgba(124,58,237,.4);
+
+    transition: .3s;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-body.dark-mode #supportButton {
-    background: rgba(50,50,50,0.9);
+#supportButton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(124,58,237,.8);
 }
 
 .modal {
@@ -373,7 +432,14 @@ body.dark-mode .username-badge {
     max-height: 120px;
     object-fit: cover;
     border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ad-banner img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 32px rgba(34, 197, 94, 0.7);
 }
 
 .ad-label {
@@ -383,24 +449,28 @@ body.dark-mode .username-badge {
     margin-top: 2px;
 }
 
- 
+.page-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 40px 90px;
+}
+
+.page-container > h1 {
+    text-align: center;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .page-container {
+        padding: 24px 16px 60px;
+    }
+}
+
 </style>
 
 <script>
 window.addEventListener("load", () => {
-
-    // Splash screen
-    setTimeout(() => {
-        const splash = document.getElementById("splash-screen");
-
-        if (splash) {
-            splash.style.opacity = "0";
-
-            setTimeout(() => {
-                splash.remove();
-            }, 500);
-        }
-    }, 3000);
 
     // Cookies
     function setCookie(name, value, days) {
@@ -482,6 +552,7 @@ window.addEventListener("load", () => {
 });
 </script>
      
+    <div class="page-container">
     <h1>Welcome to FT Games!</h1>
     <div class="ad-banner">
     <a href="https://forms.microsoft.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAADQ8dm5URU85MUlUTksxV0E3TDkyRzVCRlFHTENCWC4u" id="adBannerLink">
@@ -492,6 +563,15 @@ window.addEventListener("load", () => {
     <section class="favorites-section" aria-label="Favorited games quick access">
       <h2>⭐Your Favorites⭐</h2>
       <div id="favorites-grid" class="game-card-grid"></div>
+    </section>
+    <section class="game-filter-bar" aria-label="Search and filter games">
+      <input type="search" id="gameSearchInput" placeholder="Search games..." aria-label="Search games by title or description">
+      <select id="genreFilter" aria-label="Filter by genre">
+        <option value="">All genres</option>
+      </select>
+      <select id="difficultyFilter" aria-label="Filter by difficulty">
+        <option value="">All difficulties</option>
+      </select>
     </section>
     <section class="game-card-grid" aria-label="Games">
       <a class="game-card" href="/platformer_game">
@@ -864,10 +944,10 @@ Survive each wave, dodge enemy fire, and rack up the highest score! Thanks to Ro
           <h2 class="game-card-title">Suggestion Box</h2>
           <p class="game-card-description">This is where you can suggest games for us to add to our website. Just fill out a quick form and we'll get right on it. Try it today!</p>
           <!--Please note that game tags should NOT be applied to suggestion box. This is NOT a bug.-->
-          </div>
         </div>
       </a>
     </section>
+    </div>
     <footer id="homebaseFooter">
     Powered by Homebase
 </footer>
@@ -1112,6 +1192,99 @@ Survive each wave, dodge enemy fire, and rack up the highest score! Thanks to Ro
     renderFavorites();
   });
 })();
+</script>
+<script>
+  (() => {
+    const searchInput = document.getElementById('gameSearchInput');
+    const genreFilter = document.getElementById('genreFilter');
+    const difficultyFilter = document.getElementById('difficultyFilter');
+    const grid = document.querySelector('.game-card-grid[aria-label="Games"]');
+
+    const DIFFICULTY_ORDER = ['Easy', 'Medium', 'Hard'];
+    const games = [];
+    let noResultsMessage;
+    let suggestionBoxCard;
+
+    const stripPrefix = (text, prefix) =>
+      text.startsWith(prefix) ? text.slice(prefix.length).trim() : text.trim();
+
+    function buildGameIndex(){
+      grid.querySelectorAll('.game-card').forEach((card) => {
+        const href = card.getAttribute('href');
+        if (!href || href === '/suggestion_box') return;
+
+        const title = card.querySelector('.game-card-title')?.textContent?.trim() || '';
+        const description = card.querySelector('.game-card-description')?.textContent?.trim() || '';
+        const genre = stripPrefix(card.querySelector('.game-tag-genre')?.textContent?.trim() || '', 'Genre:');
+        const difficulty = stripPrefix(card.querySelector('.game-tag-difficulty')?.textContent?.trim() || '', 'Difficulty:');
+
+        games.push({ el: card, title, description, genre, difficulty });
+      });
+    }
+
+    function populateFilterOptions(){
+      const genres = [...new Set(games.map((g) => g.genre).filter(Boolean))].sort();
+      genres.forEach((genre) => {
+        const option = document.createElement('option');
+        option.value = genre;
+        option.textContent = genre;
+        genreFilter.appendChild(option);
+      });
+
+      const difficulties = [...new Set(games.map((g) => g.difficulty).filter(Boolean))];
+      const ordered = DIFFICULTY_ORDER.filter((d) => difficulties.includes(d));
+      const extra = difficulties.filter((d) => !DIFFICULTY_ORDER.includes(d)).sort();
+      [...ordered, ...extra].forEach((difficulty) => {
+        const option = document.createElement('option');
+        option.value = difficulty;
+        option.textContent = difficulty;
+        difficultyFilter.appendChild(option);
+      });
+    }
+
+    function applyFilters(){
+      const query = searchInput.value.trim().toLowerCase();
+      const genre = genreFilter.value;
+      const difficulty = difficultyFilter.value;
+      const filtersActive = Boolean(query || genre || difficulty);
+      let visibleCount = 0;
+
+      games.forEach((game) => {
+        const matchesSearch = !query || `${game.title} ${game.description}`.toLowerCase().includes(query);
+        const matchesGenre = !genre || game.genre === genre;
+        const matchesDifficulty = !difficulty || game.difficulty === difficulty;
+        const visible = matchesSearch && matchesGenre && matchesDifficulty;
+        game.el.classList.toggle('is-hidden', !visible);
+        if (visible) visibleCount++;
+      });
+
+      if (suggestionBoxCard) {
+        suggestionBoxCard.classList.toggle('is-hidden', filtersActive);
+      }
+
+      noResultsMessage.classList.toggle('is-hidden', visibleCount > 0);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!searchInput || !genreFilter || !difficultyFilter || !grid) return;
+
+      noResultsMessage = document.createElement('p');
+      noResultsMessage.id = 'noGameResultsMessage';
+      noResultsMessage.className = 'favorites-empty-message is-hidden';
+      noResultsMessage.textContent = 'No games match your search or filters.';
+      grid.appendChild(noResultsMessage);
+
+      suggestionBoxCard = grid.querySelector('.game-card[href="/suggestion_box"]');
+
+      buildGameIndex();
+      populateFilterOptions();
+
+      searchInput.addEventListener('input', applyFilters);
+      genreFilter.addEventListener('change', applyFilters);
+      difficultyFilter.addEventListener('change', applyFilters);
+      applyFilters();
+    });
+  })();
 </script>
   <script src="/analytics-consent.js"></script>
   </body>
