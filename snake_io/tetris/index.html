@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<!-- Created with https://packager.turbowarp.org/ -->
+
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!-- We only include this to explicitly loosen the CSP of various packager environments. It does not provide any security. -->
+  
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:">
   <title>Tetris - FT Games</title>
   <style>
@@ -372,11 +373,12 @@
     <script>
   document.getElementById("instructionsButton").addEventListener("click", () => {
       window.open(
-          "https://ftgames.xyz/tetris/instructions",
+          "https://ftgames.xyz/snake_io/tetris/instructions",
           "instructions",
           "width=800,height=600,resizable=yes,scrollbars=yes"
       );
   });
   </script>
+  <script src="/analytics-consent.js"></script>
 </body>
 </html>

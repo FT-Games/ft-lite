@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)https://chess.alexburton.com/?utm_source=codepen_chess_game -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Google Analytics -->
-  <script async="" src="/assets/js"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-RMRWVMGFCG');
-  </script>
 
-  <!-- Essentials -->
-  
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Google Analytics is loaded only after the user consents (see analytics-consent.js) -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary SEO -->
+  
   <title>Chess - FT Games</title>
   
   
-  <!-- Structured Data (JSON-LD) -->
+  
 
+  
+  <link rel="icon" href="/images/favicon.png" sizes="any">
+  <link rel="icon" href="/images/favicon.png" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
 
-  <!-- Favicons -->
-  <link rel="icon" href="https://chess.alexburton.com/favicon.ico" sizes="any">
-  <link rel="icon" href="https://chess.alexburton.com/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="https://chess.alexburton.com/apple-touch-icon.webp">
-
-  <!-- Theme Color -->
+  
   <meta name="theme-color" content="#f0d9b5">
 
     <style>
@@ -95,36 +83,56 @@
     #history-table th{ background:#f5f5f5; }
     /* Responsive */
     @media(max-width:600px){ #chess-board{ max-width:100%; } .piece{ font-size:1.95rem; } .controls{ flex-direction:column; } }
+    #homeButton,
+#instructionsButton{
+    position:fixed;
+    top:10px;
+    z-index:999999;
+
+    padding:10px 18px;
+    border-radius:14px;
+
+    background:rgba(20,20,30,.92);
+    border:2px solid #00e5ff;
+
+    color:#fff;
+    font-family:Arial,sans-serif;
+    font-size:15px;
+    font-weight:700;
+    text-decoration:none;
+    cursor:pointer;
+
+    box-shadow:
+        0 0 10px rgba(0,229,255,.35),
+        inset 0 0 8px rgba(0,229,255,.15);
+
+    transition:.25s ease;
+    user-select:none;
+}
+
+#homeButton{
+    right:10px;
+}
+
+#instructionsButton{
+    left:10px;
+}
+
+#homeButton:hover,
+#instructionsButton:hover{
+    background:linear-gradient(90deg,#00e5ff,#00ff99);
+    color:#000;
+    box-shadow:0 0 18px rgba(0,255,170,.45);
+    transform:translateY(-2px);
+}
   </style>
 </head>
-<body>
-  <a href="https://ftgames.xyz/games"
-   style="
-      position:fixed;
-      top:0;
-      right:0;
-      color:black;
-      font-size:12px;
-      font-family:Arial,sans-serif;
-      text-decoration:none;
-      z-indexv:999999;
-      padding:2px 4px;
-   ">
-   Back to Homepage
+<a id="homeButton" href="https://ftgames.xyz/games">
+🏠 Home
 </a>
-<div id="instructionsButton"
-     style="
-        position:fixed;
-        top:0;
-        left:0;
-        color:black;
-        font-size:12px;
-        font-family:Arial,sans-serif;
-        cursor:pointer;
-        z-index:999999;
-        padding:2px 4px;
-     ">
-     Rules
+
+<div id="instructionsButton">
+📖 Instructions
 </div>
   <div id="app">
     <div style="text-align:center; margin-bottom:1rem;">
@@ -152,7 +160,7 @@
     <div id="captured-black"></div>
   </div>
 
-  <!-- History Modal -->
+  
   <div id="history-modal">
     <div class="modal-content">
       <span class="close" id="history-close">×</span>
@@ -166,7 +174,7 @@
     </div>
   </div>
 
-  <!-- Result Modal -->
+  
   <div id="result-modal">
     <div class="modal-content">
       <span class="close" id="result-close">×</span>
@@ -174,7 +182,7 @@
     </div>
   </div>
 
-  <!-- Promotion Modal -->
+  
   <div id="promotion-modal">
     <div class="modal-content">
       <h3>Select a piece to promote</h3>
@@ -182,7 +190,7 @@
     </div>
   </div>
 
-  <!-- Toast Container -->
+  
   <div id="toast-container"></div>
 
   <script>
@@ -740,5 +748,6 @@
       );
   });
   </script>
+  <script src="/analytics-consent.js"></script>
 </body>
 </html>

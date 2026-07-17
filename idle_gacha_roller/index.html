@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Idle Gacha Roller — FT Games</title>
@@ -241,37 +242,61 @@
   .log-line.log-error { border-left-color: #f87171; }
 
   hr.divider { border: none; border-top: 1px dashed rgba(255,255,255,0.04); margin: 14px 0; }
+      #homeButton,
+#instructionsButton{
+    position:fixed;
+    top:10px;
+    z-index:9999999;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 18px;
+
+    background:rgba(20,20,30,.92);
+    border:2px solid #00e5ff;
+    border-radius:14px;
+
+    color:#fff !important;
+    font:700 15px Arial,sans-serif !important;
+    text-decoration:none !important;
+    line-height:1;
+    cursor:pointer;
+
+    box-shadow:
+        0 0 10px rgba(0,229,255,.35),
+        inset 0 0 8px rgba(0,229,255,.15);
+
+    transition:.25s ease;
+    user-select:none;
+}
+
+#homeButton{
+    right:10px;
+}
+
+#instructionsButton{
+    left:10px;
+}
+
+#homeButton:hover,
+#instructionsButton:hover{
+    background:linear-gradient(90deg,#00e5ff,#00ff99);
+    color:#000 !important;
+    box-shadow:0 0 18px rgba(0,255,170,.45);
+    transform:translateY(-2px);
+}
 </style>
 </head>
 <body>
-    <a href="https://ftgames.xyz/games"
-   style="
-      position:fixed;
-      top:0;
-      right:0;
-      color:white;
-      font-size:12px;
-      font-family:Arial,sans-serif;
-      text-decoration:none;
-      z-index:999999;
-      padding:2px 4px;
-   ">
-   Back to Homepage
+<a id="homeButton" href="https://ftgames.xyz/games">
+🏠 Home
 </a>
-  <div id="instructionsButton"
-     style="
-        position:fixed;
-        top:0;
-        left:0;
-        color:white;
-        font-size:12px;
-        font-family:Arial,sans-serif;
-        cursor:pointer;
-        z-index:999999;
-        padding:2px 4px;
-     ">
-     Instructions
-</div>
+
+<a id="instructionsButton" href="javascript:void(0)">
+📖 Instructions
+</a>
   <div class="money-fall" id="moneyFall"></div>
 
   <div class="left panel">
@@ -1187,5 +1212,6 @@ log('Game ready. Enjoy! 🎲', 'good');
       );
   });
   </script>
+  <script src="/analytics-consent.js"></script>
 </body>
 </html>
