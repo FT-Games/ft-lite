@@ -256,6 +256,27 @@ body.dark-mode .game-card {
 .game-card:hover .game-card-description{
     opacity:.95;
 }
+  /* Make titles and descriptions glow FT Games blue on hover */
+.game-card-title,
+.game-card-description {
+    transition:
+        color .3s ease,
+        text-shadow .3s ease,
+        opacity .3s ease;
+}
+
+.game-card:hover .game-card-title,
+.game-card:hover .game-card-description {
+    color: #00e5ff;
+    text-shadow: 0 0 12px rgba(0,229,255,.45);
+}
+
+/* Works in dark mode too */
+body.dark-mode .game-card:hover .game-card-title,
+body.dark-mode .game-card:hover .game-card-description {
+    color: #00e5ff;
+    text-shadow: 0 0 14px rgba(0,229,255,.6);
+}
 
 .game-card-content{
     position:relative;
