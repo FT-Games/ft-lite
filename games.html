@@ -227,6 +227,170 @@ h1{
         box-shadow .35s,
         transform .35s;
 }
+  /* =================================
+   LIGHT TOTALLY MATH THEME
+================================= */
+
+:root{
+    --orange:#ffb347;
+    --orange2:#ffc66d;
+    --yellow:#fff2a8;
+    --gold:#ffd966;
+    --cream:#fffbea;
+    --dark:#4a2b00;
+    --card:#fffdf5;
+}
+
+/* Background */
+body{
+    background:
+        radial-gradient(circle at top,
+        #fffde7 0%,
+        #fff3b0 30%,
+        #ffd978 65%,
+        #ffb347 100%) !important;
+
+    color:#5a3500 !important;
+}
+
+body.dark-mode{
+    background:
+        radial-gradient(circle at top,
+        #7a5200 0%,
+        #4d3000 50%,
+        #211300 100%) !important;
+
+    color:#fff7d6 !important;
+}
+
+
+/* Navbar */
+.navbar{
+    background:rgba(255,253,235,.92)!important;
+    border-bottom:2px solid rgba(255,190,80,.35)!important;
+    box-shadow:0 10px 30px rgba(255,180,60,.18);
+}
+
+body.dark-mode .navbar{
+    background:rgba(40,25,0,.9)!important;
+}
+
+
+/* Main buttons */
+#themeToggle,
+#supportButton{
+    background:
+    linear-gradient(135deg,
+    #ffc66d,
+    #fff2a8)!important;
+
+    color:#8a4b00!important;
+
+    box-shadow:
+    0 0 25px rgba(255,190,80,.4)!important;
+}
+
+#themeToggle:hover,
+#supportButton:hover{
+    box-shadow:
+    0 0 40px rgba(255,210,100,.75)!important;
+}
+
+
+/* Game cards */
+.game-card{
+    background:
+    rgba(255,255,245,.95)!important;
+
+    border:
+    2px solid rgba(255,190,80,.35)!important;
+
+    box-shadow:
+    0 10px 35px rgba(255,180,60,.15);
+}
+
+
+body.dark-mode .game-card{
+    background:
+    rgba(55,35,0,.85)!important;
+}
+
+
+/* Card hover */
+.game-card:hover{
+    box-shadow:
+    0 0 25px rgba(255,200,100,.55),
+    0 15px 35px rgba(0,0,0,.18)!important;
+}
+
+
+/* Text hover */
+.game-card:hover .game-card-title,
+.game-card:hover .game-card-description{
+    color:#ff9d00!important;
+    text-shadow:
+    0 0 12px rgba(255,180,60,.45);
+}
+
+
+/* Tags */
+.game-tag-genre{
+    background:#fff4c7!important;
+    color:#a65b00!important;
+}
+
+.game-tag-difficulty{
+    background:#ffecc2!important;
+    color:#9b5000!important;
+}
+
+
+body.dark-mode .game-tag-genre{
+    background:#654000!important;
+    color:#ffe08a!important;
+}
+
+body.dark-mode .game-tag-difficulty{
+    background:#4d2c00!important;
+    color:#ffd36a!important;
+}
+
+
+/* Search box */
+.game-filter-bar{
+    background:
+    rgba(255,250,220,.75)!important;
+
+    border:
+    2px solid rgba(255,190,80,.35)!important;
+}
+
+
+/* Favorites */
+.favorites-section{
+    background:
+    rgba(255,250,220,.75)!important;
+
+    border:
+    2px solid rgba(255,200,100,.4)!important;
+}
+
+
+/* Title */
+h1{
+    background:
+    linear-gradient(
+        90deg,
+        #ff9d00,
+        #ffd966,
+        #fff2a8,
+        #ff9d00
+    );
+
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 </style>
 
 <script>
