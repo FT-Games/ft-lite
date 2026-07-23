@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,124 +8,294 @@
 
 <title>Totally Math Lessons</title>
 
+
 <style>
 
 *{
 box-sizing:border-box;
 }
 
+
 body{
+
 margin:0;
-font-family:Segoe UI,Arial,sans-serif;
+font-family:"Segoe UI",Arial,sans-serif;
 background:linear-gradient(135deg,#fffbd6,#ffe0a3);
 color:#4b3000;
+
 }
 
 
 header{
+
 text-align:center;
-padding:30px;
+padding:35px;
+
 }
 
 
 header h1{
-font-size:45px;
+
+font-size:48px;
 margin:0;
-background:linear-gradient(90deg,#ff9800,#ff6f00);
+
+background:linear-gradient(
+90deg,
+#ff9800,
+#ffb300,
+#ff6f00
+);
+
 -webkit-background-clip:text;
 color:transparent;
+
 }
+
+
+header p{
+
+font-size:20px;
+
+}
+
 
 
 .container{
-max-width:950px;
+
+max-width:1100px;
 margin:auto;
 padding:20px;
+
 }
+
 
 
 .card{
+
 background:white;
-padding:35px;
 border-radius:30px;
+padding:35px;
 box-shadow:0 15px 40px #0003;
+
 }
 
-
-select{
-width:100%;
-padding:15px;
-border-radius:15px;
-border:2px solid #ffb300;
-font-size:18px;
-background:#fff8dc;
-}
 
 
 h2{
+
 color:#ff8c00;
+
 }
 
 
-.slide{
+
+/* LESSON CARDS */
+
+
+.lesson-grid{
+
+display:grid;
+grid-template-columns:repeat(
+auto-fit,
+minmax(220px,1fr)
+);
+
+gap:20px;
+
+}
+
+
+
+.lesson-card{
+
 background:#fff8e7;
 border:3px solid #ffd166;
 border-radius:25px;
+padding:25px;
+
+cursor:pointer;
+transition:.25s;
+
+text-align:center;
+
+}
+
+
+
+.lesson-card:hover{
+
+transform:translateY(-8px);
+background:#fff0c2;
+
+}
+
+
+
+.lesson-card h3{
+
+color:#ff8500;
+font-size:25px;
+
+}
+
+
+
+.lesson-card p{
+
+font-size:16px;
+
+}
+
+
+
+/* LEVEL PAGE */
+
+
+.level-buttons{
+
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+
+
+.level-btn{
+
+flex:1;
+min-width:200px;
+
+padding:25px;
+
+border-radius:25px;
+border:none;
+
+font-size:22px;
+cursor:pointer;
+
+background:#ffb300;
+color:white;
+
+}
+
+
+
+.level-btn:hover{
+
+background:#ff8500;
+
+}
+
+
+
+
+/* LESSON VIEWER */
+
+
+.slide-box{
+
+background:#fff8e7;
+border:3px solid #ffd166;
+
+border-radius:25px;
+
 padding:30px;
+
 font-size:20px;
+
 line-height:1.6;
-min-height:220px;
+
+min-height:250px;
+
+}
+
+
+
+.buttons{
+
+display:flex;
+gap:15px;
+margin-top:25px;
+
 }
 
 
 button{
 
 padding:15px;
-border:0;
+
+border:none;
+
 border-radius:18px;
+
 background:#ffb300;
+
 color:white;
+
 font-size:18px;
+
 cursor:pointer;
+
 flex:1;
 
 }
 
 
 button:hover{
+
 background:#ff8500;
-}
-
-
-.buttons{
-display:flex;
-gap:15px;
-margin-top:20px;
-}
-
-
-.badge{
-
-display:inline-block;
-background:#ffe082;
-padding:10px 20px;
-border-radius:20px;
 
 }
+
 
 
 .progress{
 
 text-align:center;
+
 font-weight:bold;
+
 margin-top:20px;
+
+}
+
+
+
+
+.hidden{
+
+display:none;
+
+}
+
+
+
+
+@media(max-width:600px){
+
+header h1{
+
+font-size:35px;
+
+}
+
+
+.level-buttons,
+.buttons{
+
+flex-direction:column;
+
+}
 
 }
 
 
 </style>
 
+
 </head>
+
 
 
 <body>
@@ -134,7 +305,7 @@ margin-top:20px;
 
 <h1>📚 Totally Math Lessons</h1>
 
-<p>Learn maths with interactive lessons!</p>
+<p>Choose a lesson and start learning!</p>
 
 </header>
 
@@ -142,55 +313,114 @@ margin-top:20px;
 
 <div class="container">
 
+
+
 <div class="card">
 
 
-<h2>Choose Lesson</h2>
-
-<select id="lessonSelect" onchange="changeLesson()">
-
-</select>
+<!-- LESSON SELECT PAGE -->
 
 
-
-<h2>Choose Skill Level</h2>
-
-<select id="level" onchange="changeLevel()">
-
-<option value="beginner">
-🟢 Beginner
-</option>
-
-<option value="intermediate">
-🟡 Intermediate
-</option>
-
-<option value="advanced">
-🔴 Advanced
-</option>
-
-</select>
+<div id="lessonPage">
 
 
-
-<br><br>
-
-
-<div class="badge" id="levelText">
-Beginner Mode
-</div>
-
-
-<h2 id="title">
-Loading...
+<h2>
+📖 Choose a Lesson
 </h2>
 
 
-<div class="slide" id="content">
-
-Loading...
+<div class="lesson-grid" id="lessonCards">
 
 </div>
+
+
+</div>
+
+
+
+
+
+<!-- LEVEL SELECT PAGE -->
+
+
+<div id="levelPage" class="hidden">
+
+
+<h2 id="selectedLesson">
+Choose Skill Level
+</h2>
+
+
+<p>
+Choose how difficult you want the lesson to be:
+</p>
+
+
+
+<div class="level-buttons">
+
+
+<button class="level-btn"
+onclick="startLesson('beginner')">
+
+🟢 Beginner
+
+</button>
+
+
+
+<button class="level-btn"
+onclick="startLesson('intermediate')">
+
+🟡 Intermediate
+
+</button>
+
+
+
+<button class="level-btn"
+onclick="startLesson('advanced')">
+
+🔴 Advanced
+
+</button>
+
+
+</div>
+
+
+<br>
+
+
+<button onclick="backToLessons()">
+
+⬅ Back to Lessons
+
+</button>
+
+
+</div>
+
+
+
+
+
+<!-- LESSON VIEW PAGE -->
+
+
+<div id="lessonView" class="hidden">
+
+
+<h2 id="lessonTitle">
+
+</h2>
+
+
+
+<div class="slide-box" id="slideContent">
+
+</div>
+
 
 
 <div class="progress" id="progress">
@@ -198,19 +428,29 @@ Loading...
 </div>
 
 
+
 <div class="buttons">
 
+
 <button onclick="previousSlide()">
+
 ⬅ Previous
+
 </button>
 
 
 <button onclick="nextSlide()">
+
 Next ➡
+
 </button>
 
 
 </div>
+
+
+</div>
+
 
 
 </div>
@@ -220,247 +460,214 @@ Next ➡
 
 
 <script>
+  const lessons=[
 
-
-const lessons=[
 
 {
-title:"Numbers",
+title:"🔢 Numbers",
+desc:"Learn counting and place value",
 slides:{
 beginner:[
-"Numbers are used for counting.",
-"Example: 123 has hundreds, tens and ones.",
-"Try counting objects around you."
+"Numbers help us count things.<br><br>Example: 1, 2, 3, 4",
+"Place value tells us what digits mean.<br><br>In 542, the 5 means 500.",
+"Try it:<br><br>What is the value of 7 in 7,321?"
 ],
+
 intermediate:[
-"Place value helps us understand numbers.",
-"Example: 542 = 500 + 40 + 2",
-"Expanded form shows each value."
+"Numbers can be expanded.<br><br>542 = 500 + 40 + 2",
+"Large numbers use thousands and millions.",
+"Practice writing numbers in expanded form."
 ],
+
 advanced:[
-"Numbers can include decimals and large values.",
-"Example: 45.67",
-"Decimals have tenths and hundredths."
+"Numbers can include decimals and very large values.",
+"Place value continues past the decimal point.",
+"Use rounding and estimation to check answers."
 ]
 }
+
 },
 
 
 {
-title:"Addition",
+title:"➕ Addition",
+desc:"Learn how to add numbers",
 slides:{
 beginner:[
-"Addition means putting things together.",
-"Example: 3 + 2 = 5",
+"Addition means putting groups together.",
+"Example:<br><br>3 + 4 = 7",
 "Adding makes numbers bigger."
 ],
+
 intermediate:[
 "Large addition uses carrying.",
-"Line up place values.",
-"Check your answer."
+"Line up place values carefully.",
+"Check answers using estimation."
 ],
+
 advanced:[
 "Addition can include decimals and algebra.",
-"Always keep values aligned.",
-"Estimate to check answers."
+"Keep decimal points aligned.",
+"Use inverse operations to check."
 ]
 }
+
 },
 
 
 {
-title:"Subtraction",
+title:"➖ Subtraction",
+desc:"Learn taking away",
 slides:{
 beginner:[
 "Subtraction means taking away.",
-"Example: 8 - 3 = 5",
-"The answer is the difference."
+"Example:<br><br>8 - 3 = 5",
+"The answer is called the difference."
 ],
+
 intermediate:[
 "Borrowing helps subtract larger numbers.",
-"Work from right to left.",
-"Check using addition."
+"Work from the right side.",
+"Check with addition."
 ],
+
 advanced:[
 "Subtraction works with negative numbers.",
 "Remember signs carefully.",
-"Use inverse operations."
+"Use algebra rules when needed."
 ]
 }
+
 },
 
 
 {
-title:"Multiplication",
+title:"✖ Multiplication",
+desc:"Learn times tables",
 slides:{
 beginner:[
 "Multiplication is repeated addition.",
-"Example: 4 × 3 = 12",
-"Learn times tables."
+"Example:<br><br>4 × 3 = 12",
+"Learn your times tables."
 ],
+
 intermediate:[
-"Multiply larger numbers using methods.",
-"Break numbers apart.",
-"Practice makes it faster."
+"Multiply larger numbers step by step.",
+"Break numbers apart to make it easier.",
+"Practice improves speed."
 ],
+
 advanced:[
-"Multiplication is used in algebra.",
+"Multiplication connects with algebra.",
 "Powers are repeated multiplication.",
 "Look for patterns."
 ]
 }
+
 },
 
 
 {
-title:"Division",
+title:"➗ Division",
+desc:"Learn sharing numbers",
 slides:{
 beginner:[
 "Division shares things equally.",
-"Example: 12 ÷ 3 = 4",
-"Division is sharing."
+"Example:<br><br>12 ÷ 3 = 4",
+"Division is the opposite of multiplication."
 ],
+
 intermediate:[
 "Division can have remainders.",
-"Check using multiplication.",
-"Work carefully."
+"Example:<br><br>13 ÷ 4 = 3 remainder 1",
+"Check using multiplication."
 ],
+
 advanced:[
-"Division can use fractions.",
-"Decimals may appear.",
-"Use correct formulas."
+"Division can include fractions and decimals.",
+"Use formulas carefully.",
+"Check every step."
 ]
 }
-},
-{
-title:"Fractions",
-slides:{
-beginner:[
-"Fractions show parts of a whole.",
-"Example: 1/2 means one half.",
-"Fractions have a top and bottom number."
-],
-intermediate:[
-"Fractions can be simplified.",
-"Example: 2/4 = 1/2",
-"Find common denominators."
-],
-advanced:[
-"Fractions are used in algebra.",
-"Convert between fractions and decimals.",
-"Use fraction rules carefully."
-]
-}
+
 },
 
 
 {
-title:"Decimals",
-slides:{
-beginner:[
-"Decimals show parts of numbers.",
-"Example: 0.5 means half.",
-"Decimals use place value."
-],
-intermediate:[
-"Decimals can be added and multiplied.",
-"Line up decimal points.",
-"Example: 2.5 + 1.2"
-],
-advanced:[
-"Decimals can represent precise values.",
-"Use rounding and estimation.",
-"Decimals connect with percentages."
-]
-}
-},
-
-
-{
-title:"Percentages",
-slides:{
-beginner:[
-"Percent means out of 100.",
-"Example: 50% = 50/100.",
-"Percentages show parts."
-],
-intermediate:[
-"Percentages can become decimals.",
-"Example: 25% = 0.25",
-"Useful for discounts."
-],
-advanced:[
-"Percentage change compares values.",
-"Used in finance and statistics.",
-"Formula: change ÷ original × 100."
-]
-}
-},
-
-
-{
-title:"Geometry",
+title:"📐 Geometry",
+desc:"Learn shapes and angles",
 slides:{
 beginner:[
 "Geometry studies shapes.",
 "Shapes have sides and corners.",
-"Examples are circles and triangles."
+"Examples are squares and triangles."
 ],
+
 intermediate:[
 "Geometry uses measurements.",
-"Angles and lengths matter.",
+"Angles and lengths are important.",
 "Learn shape formulas."
 ],
+
 advanced:[
 "Advanced geometry uses proofs.",
 "Shapes can be transformed.",
 "Used in engineering."
 ]
 }
+
 },
 
 
 {
-title:"Algebra",
+title:"🧩 Fractions",
+desc:"Learn parts of wholes",
 slides:{
 beginner:[
-"Algebra uses letters for numbers.",
-"Example: x + 2 = 5.",
-"Find what x means."
+"Fractions show parts of something.",
+"Example:<br><br>1/2 means one half.",
+"The top number is the numerator."
 ],
+
 intermediate:[
-"Algebra uses multiple steps.",
-"Example: 2x + 4 = 10.",
-"Undo operations to solve."
+"Fractions can be simplified.",
+"Example:<br><br>2/4 = 1/2",
+"Find common denominators."
 ],
+
 advanced:[
-"Advanced algebra solves complex equations.",
-"Variables can represent many values.",
-"Follow algebra rules."
+"Fractions are used in algebra.",
+"Convert fractions and decimals.",
+"Use fraction rules."
 ]
 }
+
 },
 
 
 {
-title:"Problem Solving",
+title:"📊 Percentages",
+desc:"Learn percentages",
 slides:{
 beginner:[
-"Read the question carefully.",
-"Choose what operation to use.",
-"Check your answer."
+"Percent means out of 100.",
+"Example:<br><br>50% = 50/100",
+"Percent shows part of a whole."
 ],
+
 intermediate:[
-"Break problems into steps.",
-"Look for patterns.",
-"Explain your method."
+"Percentages become decimals.",
+"Example:<br><br>25% = 0.25",
+"Useful for discounts."
 ],
+
 advanced:[
-"Complex problems require strategy.",
-"Test different methods.",
-"Always verify results."
+"Percentage change compares values.",
+"Used in statistics and finance.",
+"Formula: change ÷ original × 100."
 ]
 }
+
 }
 
 
@@ -468,110 +675,103 @@ advanced:[
 
 
 
-// VARIABLES
-
-let currentLesson=0;
+let selectedLesson=0;
 let currentSlide=0;
-let level="beginner";
+let currentLevel="beginner";
 
 
 
-// CREATE LESSON MENU
 
-function createMenu(){
+// CREATE LESSON CARDS
 
-let menu=document.getElementById("lessonSelect");
+function createCards(){
+
+let box=document.getElementById("lessonCards");
+
+box.innerHTML="";
+
 
 lessons.forEach((lesson,index)=>{
 
-let option=document.createElement("option");
 
-option.value=index;
+let card=document.createElement("div");
 
-option.textContent=
-(index+1)+". "+lesson.title;
+card.className="lesson-card";
 
-menu.appendChild(option);
+
+card.innerHTML=
+"<h3>"+lesson.title+"</h3>"+
+"<p>"+lesson.desc+"</p>";
+
+
+card.onclick=function(){
+
+selectedLesson=index;
+
+document.getElementById("lessonPage").classList.add("hidden");
+
+document.getElementById("levelPage").classList.remove("hidden");
+
+
+document.getElementById("selectedLesson").innerHTML=
+lesson.title+"<br>Choose Skill Level";
+
+
+};
+
+
+box.appendChild(card);
+
 
 });
 
+
 }
 
 
 
 
-// CHANGE LESSON
+// START LESSON
 
-function changeLesson(){
+function startLesson(level){
 
-currentLesson=
-Number(
-document.getElementById("lessonSelect").value
-);
+currentLevel=level;
 
 currentSlide=0;
 
-showLesson();
+
+document.getElementById("levelPage").classList.add("hidden");
+
+document.getElementById("lessonView").classList.remove("hidden");
+
+
+showSlide();
 
 }
 
 
 
+// SHOW SLIDE
 
-// CHANGE LEVEL
+function showSlide(){
 
-function changeLevel(){
+let lesson=lessons[selectedLesson];
 
-level=
-document.getElementById("level").value;
-
-document.getElementById("levelText").textContent=
-document.getElementById("level")
-.options[
-document.getElementById("level").selectedIndex
-].text;
+let slides=lesson.slides[currentLevel];
 
 
-localStorage.setItem("level",level);
-
-currentSlide=0;
-
-showLesson();
-
-}
+document.getElementById("lessonTitle").innerHTML=
+lesson.title+" - "+currentLevel;
 
 
 
-
-
-// SHOW LESSON
-
-function showLesson(){
-
-let lesson=lessons[currentLesson];
-
-let slides=
-lesson.slides[level];
-
-
-document.getElementById("title").innerHTML=
-"Lesson "+(currentLesson+1)+": "+lesson.title;
-
-
-document.getElementById("content").innerHTML=
+document.getElementById("slideContent").innerHTML=
 slides[currentSlide];
 
 
+
 document.getElementById("progress").innerHTML=
-"Lesson "
-+(currentLesson+1)
-+" / "
-+lessons.length
-+
-" | Slide "
-+(currentSlide+1)
-+" / "
-+slides.length;
+"Slide "+(currentSlide+1)+" / "+slides.length;
 
 
 }
@@ -584,7 +784,8 @@ document.getElementById("progress").innerHTML=
 function nextSlide(){
 
 let slides=
-lessons[currentLesson].slides[level];
+lessons[selectedLesson]
+.slides[currentLevel];
 
 
 currentSlide++;
@@ -594,20 +795,10 @@ if(currentSlide>=slides.length){
 
 currentSlide=0;
 
-currentLesson++;
-
-if(currentLesson>=lessons.length){
-
-currentLesson=0;
-
-}
-
-document.getElementById("lessonSelect").value=currentLesson;
-
 }
 
 
-showLesson();
+showSlide();
 
 }
 
@@ -618,44 +809,35 @@ showLesson();
 
 function previousSlide(){
 
+let slides=
+lessons[selectedLesson]
+.slides[currentLevel];
+
+
 currentSlide--;
 
 
 if(currentSlide<0){
 
-currentLesson--;
-
-if(currentLesson<0){
-
-currentLesson=lessons.length-1;
-
-}
-
-currentSlide=
-lessons[currentLesson]
-.slides[level]
-.length-1;
-
-
-document.getElementById("lessonSelect").value=currentLesson;
+currentSlide=slides.length-1;
 
 }
 
 
-showLesson();
+showSlide();
 
 }
 
 
 
 
-// LOAD SAVED SETTINGS
+// BACK
 
-if(localStorage.getItem("level")){
+function backToLessons(){
 
-level=localStorage.getItem("level");
+document.getElementById("levelPage").classList.add("hidden");
 
-document.getElementById("level").value=level;
+document.getElementById("lessonPage").classList.remove("hidden");
 
 }
 
@@ -663,12 +845,12 @@ document.getElementById("level").value=level;
 
 // START
 
-createMenu();
-
-showLesson();
+createCards();
 
 
 </script>
 
+
 </body>
+
 </html>
