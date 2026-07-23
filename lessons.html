@@ -1,307 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lessons - Totally Math</title>
-
-<link rel="icon" type="image/png" href="images/favicon.png">
-
+<title>Totally Math Lessons</title>
 
 <style>
 
 *{
-box-sizing:border-box;
-font-family:"Segoe UI",Arial,sans-serif;
+    box-sizing:border-box;
 }
-
 
 body{
-
-margin:0;
-
-background:#fffbea;
-
-color:#333;
-
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:linear-gradient(135deg,#fffbd6,#ffe0a3);
+    color:#4b3000;
 }
-
 
 header{
-
-background:linear-gradient(135deg,#fff5b8,#ffd27f);
-
-padding:35px;
-
-text-align:center;
-
-border-bottom:5px solid #ffb347;
-
+    text-align:center;
+    padding:35px 20px 10px;
 }
-
-
-.logo{
-
-position:absolute;
-
-left:20px;
-
-top:20px;
-
-width:65px;
-
-border-radius:50%;
-
-}
-
 
 header h1{
-
-font-size:45px;
-
-color:#ff8c00;
-
-margin:10px;
-
+    font-size:48px;
+    margin:0;
+    background:linear-gradient(90deg,#ff9800,#ffb300,#ff6f00);
+    -webkit-background-clip:text;
+    color:transparent;
 }
-
 
 header p{
-
-font-size:20px;
-
+    font-size:20px;
 }
-
 
 
 .container{
-
-max-width:1100px;
-
-margin:auto;
-
-padding:30px;
-
+    max-width:950px;
+    margin:auto;
+    padding:25px;
 }
 
 
-
-.box{
-
-background:white;
-
-border-radius:25px;
-
-padding:30px;
-
-margin-bottom:25px;
-
-box-shadow:0 5px 25px rgba(0,0,0,.12);
-
-text-align:center;
-
+.card{
+    background:white;
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
+
+select{
+    width:100%;
+    padding:15px;
+    border-radius:15px;
+    border:2px solid #ffb300;
+    font-size:18px;
+    background:#fff8dc;
+}
+
+
+.lesson-title{
+    font-size:32px;
+    margin-top:25px;
+    color:#ff8c00;
+}
+
+
+.slide-box{
+    margin-top:20px;
+    background:#fff8e7;
+    border-radius:25px;
+    padding:30px;
+    min-height:260px;
+    font-size:20px;
+    line-height:1.6;
+    border:3px solid #ffd166;
+}
+
+
+.controls{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:25px;
+}
 
 
 button{
-
-background:#ffb347;
-
-border:none;
-
-padding:15px 25px;
-
-border-radius:15px;
-
-font-size:18px;
-
-cursor:pointer;
-
-margin:8px;
-
-transition:.2s;
-
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:18px;
+    background:#ffb300;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
 }
 
 
 button:hover{
-
-transform:scale(1.08);
-
-background:#ff9f1c;
-
+    background:#ff8500;
+    transform:scale(1.03);
 }
-
-
-
-.lesson-card{
-
-background:#fff3c4;
-
-padding:20px;
-
-border-radius:20px;
-
-margin:15px 0;
-
-cursor:pointer;
-
-font-size:20px;
-
-transition:.2s;
-
-}
-
-
-.lesson-card:hover{
-
-transform:translateY(-5px);
-
-background:#ffe69c;
-
-}
-
-
-
-.lesson{
-
-background:white;
-
-padding:30px;
-
-border-radius:25px;
-
-box-shadow:0 5px 25px rgba(0,0,0,.15);
-
-animation:fade .4s;
-
-}
-
-
-@keyframes fade{
-
-from{
-
-opacity:0;
-
-transform:translateY(20px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-.slide{
-
-display:none;
-
-min-height:250px;
-
-}
-
-
-.slide.active{
-
-display:block;
-
-}
-
-
-.slide h2{
-
-color:#ff8c00;
-
-font-size:32px;
-
-}
-
-
-.slide p{
-
-font-size:22px;
-
-line-height:1.6;
-
-}
-
 
 
 .progress{
-
-height:15px;
-
-background:#eee;
-
-border-radius:20px;
-
-overflow:hidden;
-
+    margin-top:20px;
+    text-align:center;
+    font-weight:bold;
+    font-size:18px;
 }
 
 
-.progress-bar{
-
-height:100%;
-
-width:0%;
-
-background:#ffb347;
-
-transition:.3s;
-
+.level-box{
+    margin-bottom:20px;
 }
 
 
-
-.xp{
-
-background:#fff3c4;
-
-padding:20px;
-
-border-radius:20px;
-
-font-size:22px;
-
-font-weight:bold;
-
-color:#ff8c00;
-
+.badge{
+    display:inline-block;
+    background:#ffe082;
+    padding:8px 15px;
+    border-radius:20px;
+    margin-top:10px;
 }
 
 
+@media(max-width:600px){
+
+header h1{
+    font-size:36px;
+}
+
+.card{
+    padding:20px;
+}
+
+.controls{
+    flex-direction:column;
+}
+
+}
 
 </style>
 
 </head>
-
 
 <body>
 
 
 <header>
 
-
-<img src="images/favicon.png" class="logo">
-
-
 <h1>📚 Totally Math Lessons</h1>
 
-<p>Learn maths step by step!</p>
-
+<p>Learn maths with interactive lessons!</p>
 
 </header>
 
@@ -309,844 +165,526 @@ color:#ff8c00;
 
 <div class="container">
 
+<div class="card">
 
 
-<div class="box">
+<div class="level-box">
 
+<h2>Choose your knowledge level:</h2>
 
-<h2>Choose Your Level</h2>
+<select id="level">
 
-
-<button onclick="loadLevel('beginner')">
+<option value="beginner">
 🟢 Beginner
-</button>
+</option>
 
-
-<button onclick="loadLevel('intermediate')">
+<option value="intermediate">
 🟡 Intermediate
-</button>
+</option>
 
-
-<button onclick="loadLevel('advanced')">
+<option value="advanced">
 🔴 Advanced
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="badge" id="levelText">
+Beginner Mode
+</div>
+
+
+
+<h2 class="lesson-title" id="lessonTitle">
+Loading Lesson...
+</h2>
+
+
+
+<div class="slide-box" id="slideContent">
+
+Loading...
+
+</div>
+
+
+
+<div class="progress" id="progress">
+
+</div>
+
+
+
+<div class="controls">
+
+<button onclick="previousSlide()">
+⬅ Previous
 </button>
 
 
-</div>
-
-
-
-
-<div class="xp">
-
-⭐ XP: <span id="xp">0</span>
-
-</div>
-
-
-
-<div id="lessons"></div>
-
-
-
-<div id="lessonArea"></div>
-
-
-
-<script>
-
-
-
-let currentSlide=0;
-
-let slides=[];
-
-let xp=localStorage.getItem("mathXP") || 0;
-
-
-document.getElementById("xp").innerHTML=xp;
-
-
-
-const lessons={
-
-
-
-beginner:[
-
-
-{
-title:"Lesson 1: Numbers",
-
-slides:[
-
-["Numbers","Numbers are used for counting and measuring."],
-
-["Whole Numbers","Examples: 1,2,3,4,5..."],
-
-["Number Lines","Numbers increase when moving right."],
-
-["Practice","What comes after 9? Answer: 10"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 2: Addition",
-
-slides:[
-
-["Adding","Addition joins groups together."],
-
-["Example","3 + 2 means 3 objects plus 2 more."],
-
-["Number Lines","Move forwards to add."],
-
-["Practice","5 + 4 = 9"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 3: Subtraction",
-
-slides:[
-
-["Subtracting","Subtraction removes amounts."],
-
-["Example","8 - 3 means remove 3."],
-
-["Number Lines","Move backwards."],
-
-["Practice","10 - 5 = 5"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 4: Multiplication",
-
-slides:[
-
-["Multiplication","Multiplication is repeated addition."],
-
-["Example","4 × 3 means 4 groups of 3."],
-
-["Arrays","Rows and columns show multiplication."],
-
-["Practice","5 × 2 = 10"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 5: Division",
-
-slides:[
-
-["Division","Division shares equally."],
-
-["Example","12 ÷ 3 means split into 3 groups."],
-
-["Remember","Division is the opposite of multiplication."],
-
-["Practice","20 ÷ 4 = 5"]
-
-]
-
-},
-
-// CONTINUING BEGINNER LESSONS
-
-
-{
-title:"Lesson 6: Shapes",
-
-slides:[
-
-["Shapes","Shapes have different properties."],
-
-["2D Shapes","Squares, circles and triangles are flat shapes."],
-
-["3D Shapes","Cubes and spheres have volume."],
-
-["Practice","A triangle has 3 sides."]
-
-]
-
-},
-
-
-{
-title:"Lesson 7: Time",
-
-slides:[
-
-["Reading Time","Clocks measure hours and minutes."],
-
-["Minutes","60 minutes equals 1 hour."],
-
-["Hours","24 hours equals 1 day."],
-
-["Practice","Half past 3 is 3:30."]
-
-]
-
-},
-
-
-{
-title:"Lesson 8: Money",
-
-slides:[
-
-["Money Maths","Money uses decimals."],
-
-["Coins","Coins have different values."],
-
-["Adding Money","Always line up decimal points."],
-
-["Practice","$5 + $2 = $7"]
-
-]
-
-},
-
-
-{
-title:"Lesson 9: Measurement",
-
-slides:[
-
-["Measurement","We measure length, mass and volume."],
-
-["Length","Metres and centimetres measure distance."],
-
-["Mass","Grams and kilograms measure weight."],
-
-["Volume","Litres measure liquids."]
-
-]
-
-},
-
-
-{
-title:"Lesson 10: Patterns",
-
-slides:[
-
-["Patterns","Patterns follow rules."],
-
-["Number Patterns","2,4,6,8 follows +2."],
-
-["Finding Rules","Look at how numbers change."],
-
-["Practice","10,20,30,40..."]
-
-]
-
-}
-
-],
-
-
-
-// INTERMEDIATE LEVEL
-
-
-intermediate:[
-
-
-{
-title:"Lesson 1: Fractions",
-
-slides:[
-
-["Fractions","Fractions show parts of a whole."],
-
-["Numerator","The top number shows parts taken."],
-
-["Denominator","The bottom number shows total parts."],
-
-["Example","1/4 means one of four parts."]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 2: Decimals",
-
-slides:[
-
-["Decimals","Decimals show parts of numbers."],
-
-["Place Value","Tenths, hundredths and thousandths."],
-
-["Example","0.5 is half."],
-
-["Practice","0.25 = 25/100"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 3: Percentages",
-
-slides:[
-
-["Percent","Percent means out of 100."],
-
-["Example","50% means 50 out of 100."],
-
-["Converting","50% = 0.5"],
-
-["Practice","25% = 25/100"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 4: Ratios",
-
-slides:[
-
-["Ratios","Ratios compare amounts."],
-
-["Example","2:3 compares two amounts."],
-
-["Simplifying","Divide both numbers equally."],
-
-["Practice","4:8 becomes 1:2"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 5: Speed",
-
-slides:[
-
-["Speed","Speed measures movement."],
-
-["Formula","Speed = Distance ÷ Time"],
-
-["Example","100km in 2 hours = 50km/h"],
-
-["Remember","Always include units."]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 6: Angles",
-
-slides:[
-
-["Angles","Angles measure turns."],
-
-["Acute","Less than 90 degrees."],
-
-["Right Angle","Exactly 90 degrees."],
-
-["Obtuse","More than 90 degrees."]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 7: Integers",
-
-slides:[
-
-["Integers","Integers include negative numbers."],
-
-["Examples","-5,-4,-3,0,1,2"],
-
-["Number Lines","Negative numbers are left of zero."],
-
-["Practice","-5 + 10 = 5"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 8: Formulas",
-
-slides:[
-
-["Formulas","Formulas are maths rules."],
-
-["Example","Area = length × width"],
-
-["Substitution","Replace letters with numbers."],
-
-["Practice","Use the correct formula."]
-
-]
-
-},
-
-
-
-// ADVANCED LEVEL
-
-
-advanced:[
-
-
-{
-title:"Lesson 1: Algebra",
-
-slides:[
-
-["Variables","Letters can represent unknown numbers."],
-
-["Example","x + 5 = 10"],
-
-["Solving","Subtract 5 from both sides."],
-
-["Answer","x = 5"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 2: Equations",
-
-slides:[
-
-["Equations","Both sides must remain equal."],
-
-["Rule","Do the same thing to both sides."],
-
-["Example","3x = 15"],
-
-["Answer","x = 5"]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 3: Geometry",
-
-slides:[
-
-["Geometry","Geometry studies shapes and space."],
-
-["Angles","Angles are measured in degrees."],
-
-["Triangles","Triangles have 180° total."],
-
-["Practice","Squares have four 90° angles."]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 4: Area",
-
-slides:[
-
-["Area","Area measures inside space."],
-
-["Rectangle","Length × Width"],
-
-["Example","5 × 4 = 20"],
-
-["Units","Square units are used."]
-
-]
-
-},
-
-
-
-{
-title:"Lesson 5: Volume",
-
-slides:[
-
-["Volume","Volume measures 3D space."],
-
-["Formula","Length × Width × Height"],
-
-["Example","2×3×4 = 24"],
-
-["Units","Cubic units."]
-
-]
-
-},
-
-
-
-// FINISH ADVANCED LESSONS
-
-
-{
-title:"Lesson 6: Probability",
-
-slides:[
-
-["Probability","Probability measures chance."],
-
-["Scale","0 means impossible, 1 means certain."],
-
-["Example","A coin flip has a 1/2 chance."],
-
-["Practice","A dice roll has a 1/6 chance for each number."]
-
-]
-
-},
-
-
-{
-title:"Lesson 7: Statistics",
-
-slides:[
-
-["Statistics","Statistics studies information and data."],
-
-["Mean","Add numbers and divide by how many numbers."],
-
-["Median","The middle number."],
-
-["Mode","The most common number."]
-
-]
-
-},
-
-
-{
-title:"Lesson 8: Graphs",
-
-slides:[
-
-["Graphs","Graphs show information visually."],
-
-["Bar Graphs","Compare amounts."],
-
-["Line Graphs","Show change over time."],
-
-["Pie Charts","Show parts of a whole."]
-
-]
-
-},
-
-
-{
-title:"Lesson 9: Square Numbers",
-
-slides:[
-
-["Squares","A number multiplied by itself."],
-
-["Example","5² = 25"],
-
-["Pattern","1,4,9,16,25..."],
-
-["Tip","Learn common squares."]
-
-]
-
-},
-
-
-{
-title:"Lesson 10: Square Roots",
-
-slides:[
-
-["Square Roots","The opposite of squaring."],
-
-["Example","√25 = 5"],
-
-["Reason","5 × 5 = 25"],
-
-["Practice","√64 = 8"]
-
-]
-
-}
-
-
-]
-
-};
-
-
-
-// LOAD LEVEL
-
-
-function loadLevel(level){
-
-
-let area=document.getElementById("lessons");
-
-
-area.innerHTML="<h2>"+level.toUpperCase()+" LESSONS</h2>";
-
-
-lessons[level].forEach(function(lesson){
-
-
-let card=document.createElement("div");
-
-
-card.className="lesson-card";
-
-
-card.innerHTML="📘 "+lesson.title;
-
-
-card.onclick=function(){
-
-openLesson(lesson);
-
-};
-
-
-area.appendChild(card);
-
-
-});
-
-
-}
-
-
-
-// OPEN LESSON
-
-
-function openLesson(lesson){
-
-
-let box=document.getElementById("lessonArea");
-
-
-let html=`
-
-
-<div class="lesson">
-
-
-<h1>${lesson.title}</h1>
-
-
-<div class="progress">
-
-<div class="progress-bar" id="bar"></div>
-
-</div>
-
-
-`;
-
-
-slides=lesson.slides;
-
-
-slides.forEach(function(slide,index){
-
-
-html+=`
-
-
-<div class="slide ${index===0?"active":""}">
-
-
-<h2>${slide[0]}</h2>
-
-
-<p>${slide[1]}</p>
-
-
-</div>
-
-
-`;
-
-
-});
-
-
-
-html+=`
-
-
-<button onclick="changeSlide(-1)">
-⬅ Back
-</button>
-
-
-<button onclick="changeSlide(1)">
+<button onclick="nextSlide()">
 Next ➡
 </button>
 
 
-<button onclick="completeLesson()">
-✅ Complete Lesson
-</button>
+</div>
 
 
 </div>
 
+</div>
 
-`;
+  <script>
+
+const lessons = [
+
+{
+title:"Numbers & Place Value",
+slides:[
+"Numbers are the foundation of maths.<br><br>We use numbers to count, measure and compare things.",
+"Place value tells us what each digit means.<br><br>Example: In 542, the 5 means 500.",
+"Try it:<br><br>What is the value of the 7 in 7,321?"
+]
+},
+
+{
+title:"Addition",
+slides:[
+"Addition means putting groups together.",
+"Example:<br><br>5 + 3 = 8<br><br>You started with 5 and added 3 more.",
+"Challenge:<br><br>Try adding bigger numbers using columns."
+]
+},
+
+{
+title:"Subtraction",
+slides:[
+"Subtraction means taking something away.",
+"Example:<br><br>10 - 4 = 6",
+"Remember:<br><br>The answer in subtraction is called the difference."
+]
+},
+
+{
+title:"Multiplication",
+slides:[
+"Multiplication is repeated addition.",
+"Example:<br><br>4 × 3 means 4 groups of 3.",
+"Practice:<br><br>Learn your times tables to become faster."
+]
+},
+
+{
+title:"Division",
+slides:[
+"Division splits things into equal groups.",
+"Example:<br><br>12 ÷ 3 = 4",
+"Division is the opposite of multiplication."
+]
+},
+
+{
+title:"Fractions",
+slides:[
+"Fractions show parts of a whole.",
+"Example:<br><br>1/2 means one out of two equal parts.",
+"Fractions have a numerator and denominator."
+]
+},
+
+{
+title:"Decimals",
+slides:[
+"Decimals show numbers between whole numbers.",
+"Example:<br><br>0.5 = one half",
+"Decimals use place values like tenths and hundredths."
+]
+},
+
+{
+title:"Percentages",
+slides:[
+"Percent means 'out of 100'.",
+"Example:<br><br>50% means 50 out of 100.",
+"Percentages are useful for discounts and data."
+]
+},
+
+{
+title:"Geometry",
+slides:[
+"Geometry is the study of shapes.",
+"Shapes have properties like sides, angles and corners.",
+"Common shapes include triangles, squares and circles."
+]
+},
+
+{
+title:"Angles",
+slides:[
+"Angles measure turns.",
+"A right angle is exactly 90 degrees.",
+"Angles can be acute, right or obtuse."
+]
+},
+
+{
+title:"Perimeter",
+slides:[
+"Perimeter is the distance around a shape.",
+"Add every side length together.",
+"Example:<br>Square with sides of 5cm:<br>5+5+5+5=20cm"
+]
+},
+
+{
+title:"Area",
+slides:[
+"Area measures the space inside a shape.",
+"Rectangle formula:<br><br>Length × Width",
+"Area uses square units like cm²."
+]
+},
+
+{
+title:"Algebra",
+slides:[
+"Algebra uses letters for unknown numbers.",
+"Example:<br><br>x + 5 = 10",
+"The goal is finding what the letter represents."
+]
+},
+
+{
+title:"Equations",
+slides:[
+"An equation says two things are equal.",
+"Example:<br><br>3x = 12",
+"Solve by using opposite operations."
+]
+},
+
+{
+title:"Coordinates",
+slides:[
+"Coordinates locate points on a grid.",
+"They are written as (x,y).",
+"The first number moves sideways, the second moves up."
+]
+},
+
+{
+title:"Graphs",
+slides:[
+"Graphs display information visually.",
+"Different graphs show different types of data.",
+"Always read labels and scales carefully."
+]
+},
+
+{
+title:"Probability",
+slides:[
+"Probability measures how likely something is.",
+"Impossible = 0<br>Certain = 1",
+"Probability is often written as fractions or percentages."
+]
+},
+
+{
+title:"Statistics",
+slides:[
+"Statistics is collecting and analysing data.",
+"Mean = average.",
+"Median is the middle value."
+]
+},
+
+{
+title:"Patterns",
+slides:[
+"Patterns follow rules.",
+"Example:<br>2,4,6,8...",
+"The rule is adding 2 each time."
+]
+},
+
+{
+title:"Negative Numbers",
+slides:[
+"Negative numbers are below zero.",
+"Example:<br>-5 is less than 0.",
+"They are used for temperatures and money."
+]
+},
+
+{
+title:"Ratios",
+slides:[
+"Ratios compare amounts.",
+"Example:<br>2:3 compares two groups.",
+"Ratios can be simplified like fractions."
+]
+},
+
+{
+title:"Sequences",
+slides:[
+"A sequence is a list following a rule.",
+"Example:<br>5,10,15,20",
+"The rule is adding 5."
+]
+},
+
+{
+title:"Exponents",
+slides:[
+"Exponents show repeated multiplication.",
+"Example:<br>2³ = 2×2×2",
+"The small number is called the power."
+]
+},
+
+{
+title:"Square Roots",
+slides:[
+"Square roots undo squaring.",
+"Example:<br>√25 = 5",
+"5×5 gives 25."
+]
+},
+
+{
+title:"Pythagoras",
+slides:[
+"Pythagoras helps find missing triangle sides.",
+"Formula:<br>a²+b²=c²",
+"Only works for right-angle triangles."
+]
+},
+
+{
+title:"Volume",
+slides:[
+"Volume measures 3D space.",
+"Cube formula:<br>side × side × side",
+"Volume uses cubic units."
+]
+},
+
+{
+title:"Linear Maths",
+slides:[
+"Linear equations make straight lines.",
+"They often use y = mx + b.",
+"The slope shows how fast something changes."
+]
+},
+
+{
+title:"Functions",
+slides:[
+"Functions turn inputs into outputs.",
+"Example:<br>Input → Rule → Output",
+"They are used in advanced maths."
+]
+},
+
+{
+title:"Advanced Algebra",
+slides:[
+"Advanced algebra uses more complex equations.",
+"You may need multiple steps.",
+"Keep working carefully one step at a time."
+]
+},
+
+{
+title:"Problem Solving",
+slides:[
+"Good problem solving uses a plan.",
+"1. Understand the question<br>2. Choose a method<br>3. Solve<br>4. Check",
+"Practice makes you faster and more accurate."
+]
+}
+
+];
+
+</script>
+<script>
+
+let currentLesson = 0;
+let currentSlide = 0;
+
+
+// Load saved progress
+
+if(localStorage.getItem("mathLesson")){
+    currentLesson = Number(localStorage.getItem("mathLesson"));
+}
+
+if(localStorage.getItem("mathLevel")){
+    document.getElementById("level").value =
+    localStorage.getItem("mathLevel");
+}
+
+
+// Update level display
+
+function updateLevel(){
+
+    let level =
+    document.getElementById("level").value;
+
+    let text =
+    document.getElementById("levelText");
+
+
+    if(level=="beginner"){
+        text.innerHTML="🟢 Beginner Mode";
+    }
+
+    if(level=="intermediate"){
+        text.innerHTML="🟡 Intermediate Mode";
+    }
+
+    if(level=="advanced"){
+        text.innerHTML="🔴 Advanced Mode";
+    }
+
+
+    localStorage.setItem("mathLevel",level);
+}
+
+
+document
+.getElementById("level")
+.addEventListener("change",updateLevel);
 
 
 
-box.innerHTML=html;
+// Display lesson
 
+function loadLesson(){
+
+
+let lesson = lessons[currentLesson];
+
+
+document.getElementById("lessonTitle")
+.innerHTML =
+"Lesson "
++(currentLesson+1)
++": "
++lesson.title;
+
+
+
+document.getElementById("slideContent")
+.innerHTML =
+lesson.slides[currentSlide];
+
+
+
+document.getElementById("progress")
+.innerHTML =
+"Lesson "
++(currentLesson+1)
++" / "
++lessons.length
++
+" &nbsp; | &nbsp; Slide "
++(currentSlide+1)
++" / 3";
+
+
+
+localStorage.setItem(
+"mathLesson",
+currentLesson
+);
+
+
+}
+
+
+
+
+// Next button
+
+function nextSlide(){
+
+
+currentSlide++;
+
+
+if(currentSlide >= 3){
 
 currentSlide=0;
 
+currentLesson++;
 
-updateProgress();
 
+if(currentLesson >= lessons.length){
+
+currentLesson=0;
+
+}
+
+}
+
+
+loadLesson();
 
 }
 
 
 
-// CHANGE SLIDE
+
+// Previous button
+
+function previousSlide(){
 
 
-function changeSlide(amount){
+currentSlide--;
 
 
-let allSlides=document.querySelectorAll(".slide");
+if(currentSlide < 0){
+
+currentSlide=2;
+
+currentLesson--;
 
 
-allSlides[currentSlide].classList.remove("active");
+if(currentLesson < 0){
+
+currentLesson =
+lessons.length-1;
+
+}
+
+}
 
 
-currentSlide+=amount;
-
-
-
-if(currentSlide<0){
-
-currentSlide=0;
+loadLesson();
 
 }
 
 
 
-if(currentSlide>=allSlides.length){
 
-currentSlide=allSlides.length-1;
+// Start page
 
-}
+updateLevel();
 
-
-
-allSlides[currentSlide].classList.add("active");
-
-
-updateProgress();
-
-
-}
-
-
-
-// PROGRESS BAR
-
-
-function updateProgress(){
-
-
-let bar=document.getElementById("bar");
-
-
-if(bar){
-
-
-bar.style.width=
-((currentSlide+1)/slides.length*100)+"%";
-
-
-}
-
-
-}
-
-
-
-// XP SYSTEM
-
-
-function completeLesson(){
-
-
-xp++;
-
-
-localStorage.setItem("mathXP",xp);
-
-
-document.getElementById("xp").innerHTML=xp;
-
-
-alert("🎉 Lesson Completed! +1 XP");
-
-
-}
-
+loadLesson();
 
 
 </script>
 
 
 </body>
-
 </html>
