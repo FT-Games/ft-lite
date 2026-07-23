@@ -13,26 +13,40 @@
 
 *{
 box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 
 body{
-margin:0;
+
 font-family:"Segoe UI",Arial,sans-serif;
-background:linear-gradient(135deg,#fffbd6,#ffe0a3);
+
+background:linear-gradient(
+135deg,
+#fffbd6,
+#ffe0a3
+);
+
 color:#4b3000;
+
 }
+
 
 
 header{
+
 text-align:center;
-padding:35px 20px;
+
+padding:35px;
+
 }
 
 
+
 header h1{
-font-size:48px;
-margin:0;
+
+font-size:50px;
 
 background:linear-gradient(
 90deg,
@@ -42,37 +56,86 @@ background:linear-gradient(
 );
 
 -webkit-background-clip:text;
+
 color:transparent;
+
 }
+
 
 
 header p{
+
 font-size:20px;
+
 }
+
+
+
+.home-button{
+
+position:absolute;
+
+top:20px;
+
+left:20px;
+
+background:#ffb300;
+
+color:white;
+
+text-decoration:none;
+
+padding:12px 20px;
+
+border-radius:25px;
+
+font-weight:bold;
+
+}
+
+
+
+.home-button:hover{
+
+background:#ff8500;
+
+}
+
 
 
 .container{
 
-max-width:1100px;
+max-width:1200px;
+
 margin:auto;
-padding:20px;
+
+padding:25px;
 
 }
+
 
 
 .box{
 
 background:white;
+
 border-radius:30px;
+
 padding:35px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.15);
 
 }
 
 
 
 h2{
+
 color:#ff8500;
+
+margin-bottom:25px;
+
 }
 
 
@@ -82,9 +145,9 @@ color:#ff8500;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
+repeat(auto-fit,minmax(230px,1fr));
 
-gap:20px;
+gap:25px;
 
 }
 
@@ -99,8 +162,6 @@ border:3px solid #ffd166;
 border-radius:25px;
 
 padding:25px;
-
-text-align:center;
 
 cursor:pointer;
 
@@ -124,15 +185,15 @@ background:#fff0c2;
 
 color:#ff8500;
 
-font-size:24px;
+margin-bottom:10px;
 
 }
 
 
 
-.lesson-card p{
+.hidden{
 
-font-size:16px;
+display:none;
 
 }
 
@@ -154,19 +215,17 @@ flex-wrap:wrap;
 
 flex:1;
 
-min-width:200px;
-
 padding:25px;
+
+background:#ffb300;
 
 border:none;
 
 border-radius:25px;
 
-font-size:22px;
-
-background:#ffb300;
-
 color:white;
+
+font-size:22px;
 
 cursor:pointer;
 
@@ -190,13 +249,13 @@ border:3px solid #ffd166;
 
 border-radius:25px;
 
-padding:30px;
+padding:35px;
 
-font-size:20px;
+font-size:21px;
 
-line-height:1.6;
+line-height:1.7;
 
-min-height:250px;
+min-height:300px;
 
 }
 
@@ -206,7 +265,7 @@ min-height:250px;
 
 display:flex;
 
-gap:15px;
+gap:20px;
 
 margin-top:25px;
 
@@ -216,23 +275,22 @@ margin-top:25px;
 
 button{
 
-padding:15px;
-
-border:none;
-
-border-radius:18px;
-
 background:#ffb300;
 
 color:white;
+
+border:none;
+
+padding:15px;
+
+border-radius:20px;
 
 font-size:18px;
 
 cursor:pointer;
 
-flex:1;
-
 }
+
 
 
 button:hover{
@@ -247,35 +305,9 @@ background:#ff8500;
 
 text-align:center;
 
-font-weight:bold;
-
 margin-top:20px;
 
-}
-
-
-
-.hidden{
-
-display:none;
-
-}
-
-
-
-@media(max-width:600px){
-
-header h1{
-
-font-size:36px;
-
-}
-
-.controls{
-
-flex-direction:column;
-
-}
+font-weight:bold;
 
 }
 
@@ -283,19 +315,25 @@ flex-direction:column;
 
 </style>
 
-
 </head>
 
 
-
 <body>
+
+
+<a class="home-button" href="index.html">
+
+🏠 Homepage
+
+</a>
+
 
 
 <header>
 
 <h1>📚 Totally Math Lessons</h1>
 
-<p>Choose a lesson and master maths!</p>
+<p>Master maths step by step!</p>
 
 </header>
 
@@ -305,9 +343,6 @@ flex-direction:column;
 
 <div class="box">
 
-
-
-<!-- LESSON CARDS -->
 
 
 <div id="lessonPage">
@@ -327,22 +362,19 @@ flex-direction:column;
 
 
 
-<!-- SKILL LEVEL -->
-
-
 <div id="levelPage" class="hidden">
 
 
-<h2 id="levelTitle">
-
-Choose Skill Level
+<h2 id="chosenLesson">
 
 </h2>
 
 
-<p>
-Choose your difficulty:
-</p>
+<h2>
+
+Choose your skill level
+
+</h2>
 
 
 
@@ -357,14 +389,12 @@ onclick="startLesson('beginner')">
 </button>
 
 
-
 <button class="level-button"
 onclick="startLesson('intermediate')">
 
 🟡 Intermediate
 
 </button>
-
 
 
 <button class="level-button"
@@ -394,17 +424,13 @@ onclick="startLesson('advanced')">
 
 
 
-
-<!-- LESSON VIEW -->
-
-
 <div id="lessonView" class="hidden">
 
 
 <h2 id="lessonTitle"></h2>
 
 
-<div class="slide-box" id="slide">
+<div class="slide-box" id="slideContent">
 
 </div>
 
@@ -412,6 +438,7 @@ onclick="startLesson('advanced')">
 <div class="progress" id="progress">
 
 </div>
+
 
 
 <div class="controls">
@@ -434,46 +461,89 @@ Next ➡
 </div>
 
 
-
 </div>
-
-
-
-</div>
-
-</div>
-
-
-
-
 <script>
-
 
 const lessons=[
 
 
 {
 title:"🔢 Numbers & Place Value",
-desc:"Learn how numbers work",
+desc:"Understand how numbers are built",
 slides:{
+
 beginner:[
-"Numbers help us count.",
-"Place value tells us what digits mean.",
-"Example: 542 = 500 + 40 + 2"
+
+"Numbers are everywhere!<br><br>We use numbers to count, measure and compare things.",
+
+"Every digit has a value depending on where it is placed.<br><br>
+Example:<br>
+542 = 500 + 40 + 2",
+
+"Place values go from right to left:<br>
+Ones → Tens → Hundreds → Thousands",
+
+"Example:<br>
+In 7,321 the 7 means 7,000.",
+
+"Numbers can be written in expanded form.<br><br>
+4,506 = 4,000 + 500 + 6",
+
+"Practice:<br>
+What is the value of the 8 in 8,942?",
+
+"Challenge:<br>
+Write 6,305 in expanded form.",
+
+"Great job! You have learned place value."
 ],
 
 intermediate:[
-"Numbers can be expanded into thousands.",
-"Decimals have tenths and hundredths.",
-"Compare numbers using place value."
+
+"Large numbers can contain millions and billions.",
+
+"Commas separate groups of three digits.",
+
+"Decimals also have place values.<br>
+Example:<br>
+0.45 = 4 tenths and 5 hundredths",
+
+"Rounding helps estimate answers.",
+
+"Example:<br>
+7,846 rounded to the nearest hundred = 7,800",
+
+"Compare numbers by looking at the biggest place value first.",
+
+"Practice comparing large numbers.",
+
+"Challenge yourself with decimals."
+
 ],
 
 advanced:[
-"Numbers can include decimals and scientific notation.",
-"Large values use powers of ten.",
-"Use estimation to check answers."
+
+"Place value is used in scientific notation.",
+
+"Scientific notation writes very large or small numbers easily.",
+
+"Example:<br>
+5,000,000 = 5 × 10⁶",
+
+"Significant figures show measurement accuracy.",
+
+"Numbers can be represented in different forms.",
+
+"Convert between standard form and scientific notation.",
+
+"Advanced challenge:<br>
+Write 0.00042 in scientific notation.",
+
+"You mastered advanced place value!"
 ]
-}
+
+},
+
 
 },
 
@@ -481,26 +551,77 @@ advanced:[
 
 {
 title:"➕ Addition",
-desc:"Learn adding numbers",
+desc:"Learn how to combine numbers",
 slides:{
+
 beginner:[
-"Addition joins groups together.",
-"Example: 3 + 2 = 5",
-"Adding increases a number."
+
+"Addition means joining groups together.",
+
+"Example:<br>
+3 apples + 2 apples = 5 apples",
+
+"The plus sign (+) tells us to add.",
+
+"You can add using counting, number lines or mental maths.",
+
+"Example:<br>
+8 + 5 = 13",
+
+"Large numbers can be added by lining up place values.",
+
+"Practice:<br>
+24 + 15 = ?",
+
+"Challenge:<br>
+56 + 37 = ?"
+
 ],
 
 intermediate:[
-"Large addition uses carrying.",
-"Line up place values.",
-"Check your answer."
+
+"Addition with larger numbers may need carrying.",
+
+"Always line up ones, tens and hundreds.",
+
+"Example:<br>
+247 + 156",
+
+"Decimals must have their decimal points lined up.",
+
+"Addition can check subtraction answers.",
+
+"Word problems often use addition.",
+
+"Practice multi-step addition.",
+
+"Solve real-world problems."
+
 ],
 
 advanced:[
-"Addition works with decimals and algebra.",
-"Use inverse operations.",
-"Find efficient methods."
+
+"Addition is used throughout algebra and higher maths.",
+
+"Variables can be added together.",
+
+"Example:<br>
+x + x = 2x",
+
+"Negative numbers can also be added.",
+
+"Decimal precision matters in calculations.",
+
+"Use estimation to check answers.",
+
+"Solve complex addition equations.",
+
+"Excellent advanced work!"
+
 ]
-}
+
+},
+
 
 },
 
@@ -508,51 +629,113 @@ advanced:[
 
 {
 title:"➖ Subtraction",
-desc:"Learn taking away",
+desc:"Learn how to take away",
 slides:{
+
 beginner:[
-"Subtraction removes amounts.",
-"Example: 8 - 3 = 5",
-"The answer is the difference."
+
+"Subtraction means removing an amount.",
+
+"Example:<br>
+10 - 4 = 6",
+
+"The minus sign (-) means take away.",
+
+"Subtraction can be shown using number lines.",
+
+"Example:<br>
+Start at 9, move back 3 spaces.",
+
+"Large subtraction uses borrowing.",
+
+"Practice:<br>
+15 - 7 = ?",
+
+"Challenge:<br>
+42 - 19 = ?"
+
 ],
 
 intermediate:[
-"Borrowing helps subtract large numbers.",
-"Work right to left.",
-"Check using addition."
+
+"Borrowing changes place values.",
+
+"Always subtract from right to left.",
+
+"Check subtraction using addition.",
+
+"Subtraction can solve word problems.",
+
+"Decimals need aligned points.",
+
+"Negative numbers require care.",
+
+"Practice harder subtraction.",
+
+"Solve multi-step questions."
+
 ],
 
 advanced:[
-"Negative numbers use subtraction.",
-"Algebra uses subtraction rules.",
-"Watch signs carefully."
+
+"Subtraction is important in algebra.",
+
+"Subtracting negative numbers changes results.",
+
+"Example:<br>
+5 - (-3) = 8",
+
+"Use subtraction to isolate variables.",
+
+"Apply subtraction in equations.",
+
+"Work with fractions and decimals.",
+
+"Solve advanced problems.",
+
+"Great work!"
+
 ]
+
 }
 
-},
+}
 {
-
 title:"✖ Multiplication",
-desc:"Learn times tables",
-
+desc:"Master times tables",
 slides:{
 
 beginner:[
 "Multiplication is repeated addition.",
-"Example: 4 × 3 = 12.",
-"Learn your times tables."
+"Example:<br>4 × 3 means 4 groups of 3.",
+"Times tables help you calculate faster.",
+"Multiplication uses the symbol ×.",
+"Example:<br>5 × 6 = 30.",
+"Practice your times tables regularly.",
+"Try:<br>7 × 8 = ?",
+"Challenge:<br>12 × 4 = ?"
 ],
 
 intermediate:[
-"Multiply larger numbers step by step.",
-"Break numbers apart.",
-"Practice improves speed."
+"Large multiplication can be broken into parts.",
+"Example:<br>23 × 4 = (20×4)+(3×4).",
+"Use written multiplication for large numbers.",
+"Multiplication works with decimals.",
+"Check answers using division.",
+"Solve word problems using multiplication.",
+"Practice larger calculations.",
+"Complete the challenge."
 ],
 
 advanced:[
-"Multiplication connects with algebra.",
-"Powers are repeated multiplication.",
-"Use patterns to solve faster."
+"Multiplication is used in algebra.",
+"Variables can be multiplied together.",
+"Example:<br>x × x = x².",
+"Use multiplication in formulas.",
+"Scientific calculations use multiplication.",
+"Solve complex expressions.",
+"Apply multiplication skills.",
+"Advanced challenge complete."
 ]
 
 }
@@ -561,28 +744,41 @@ advanced:[
 
 
 {
-
 title:"➗ Division",
-desc:"Learn sharing numbers",
-
+desc:"Learn sharing and grouping",
 slides:{
 
 beginner:[
-"Division shares amounts equally.",
-"Example: 12 ÷ 3 = 4.",
-"Division is the opposite of multiplication."
+"Division means splitting something equally.",
+"Example:<br>12 ÷ 3 = 4.",
+"Division is the opposite of multiplication.",
+"The ÷ symbol means divide.",
+"Groups help us understand division.",
+"Practice simple division.",
+"Try:<br>20 ÷ 5 = ?",
+"Challenge yourself."
 ],
 
 intermediate:[
 "Division can have remainders.",
-"Use long division.",
-"Check with multiplication."
+"Example:<br>17 ÷ 5 = 3 remainder 2.",
+"Long division helps with larger numbers.",
+"Use multiplication to check answers.",
+"Division works with decimals.",
+"Solve division word problems.",
+"Practice harder questions.",
+"Keep improving."
 ],
 
 advanced:[
-"Division works with fractions and decimals.",
-"Use inverse operations.",
-"Solve carefully."
+"Division is important in algebra.",
+"Fractions are another form of division.",
+"Variables can be divided.",
+"Use division to solve equations.",
+"Apply formulas carefully.",
+"Solve advanced division.",
+"Check your work.",
+"Great job."
 ]
 
 }
@@ -591,28 +787,41 @@ advanced:[
 
 
 {
-
 title:"🧩 Fractions",
 desc:"Parts of a whole",
-
 slides:{
 
 beginner:[
-"Fractions show parts of something.",
-"1/2 means one half.",
-"The top number is the numerator."
+"Fractions show equal parts of something.",
+"The top number is the numerator.",
+"The bottom number is the denominator.",
+"Example:<br>1/4 means one out of four parts.",
+"Fractions can represent pieces.",
+"Compare simple fractions.",
+"Practice fractions.",
+"Challenge questions."
 ],
 
 intermediate:[
 "Fractions can be simplified.",
-"Find common denominators.",
-"Add and subtract fractions."
+"Example:<br>2/4 = 1/2.",
+"Adding fractions needs common denominators.",
+"Fractions can become decimals.",
+"Mixed numbers contain whole numbers.",
+"Solve fraction problems.",
+"Use fraction rules.",
+"Complete the challenge."
 ],
 
 advanced:[
 "Fractions are used in algebra.",
+"Complex fractions need multiple steps.",
 "Convert between fractions and decimals.",
-"Solve complex fraction problems."
+"Use formulas with fractions.",
+"Solve algebraic fractions.",
+"Apply advanced methods.",
+"Check solutions.",
+"Excellent work."
 ]
 
 }
@@ -621,28 +830,41 @@ advanced:[
 
 
 {
-
 title:"🔢 Decimals",
 desc:"Numbers with decimal points",
-
 slides:{
 
 beginner:[
-"Decimals show parts of numbers.",
-"0.5 means half.",
-"Decimals use place value."
+"Decimals show parts of whole numbers.",
+"Example:<br>0.5 means half.",
+"Decimal places include tenths and hundredths.",
+"Read decimals carefully.",
+"Compare decimal numbers.",
+"Practice decimal values.",
+"Try examples.",
+"Challenge yourself."
 ],
 
 intermediate:[
-"Add and multiply decimals.",
+"Add and subtract decimals.",
 "Line up decimal points.",
-"Round answers."
+"Multiply decimal numbers.",
+"Round decimal answers.",
+"Convert decimals to fractions.",
+"Solve problems.",
+"Use estimation.",
+"Finish the challenge."
 ],
 
 advanced:[
-"Decimals represent precision.",
+"Decimals are used in science.",
 "Use significant figures.",
-"Apply decimals in equations."
+"Calculate precise values.",
+"Apply decimals in formulas.",
+"Work with complex calculations.",
+"Analyse accuracy.",
+"Solve advanced questions.",
+"Complete."
 ]
 
 }
@@ -651,28 +873,41 @@ advanced:[
 
 
 {
-
 title:"📊 Percentages",
-desc:"Learn percentages",
-
+desc:"Understand percentages",
 slides:{
 
 beginner:[
 "Percent means out of 100.",
-"50% means 50 out of 100.",
-"Percent shows parts."
+"Example:<br>25% = 25/100.",
+"Percentages compare amounts.",
+"Half is 50%.",
+"A quarter is 25%.",
+"Practice basic percentages.",
+"Find simple percentages.",
+"Challenge."
 ],
 
 intermediate:[
 "Convert percentages and decimals.",
 "Calculate discounts.",
-"Find percentage increases."
+"Find percentage increases.",
+"Use percentage formulas.",
+"Solve money problems.",
+"Compare changes.",
+"Practice.",
+"Challenge."
 ],
 
 advanced:[
 "Percentage change uses formulas.",
-"Used in finance.",
-"Analyse percentage growth."
+"Growth and decrease use percentages.",
+"Percentages are used in finance.",
+"Analyse data.",
+"Solve complex percentage problems.",
+"Use algebra.",
+"Apply skills.",
+"Complete."
 ]
 
 }
@@ -681,401 +916,81 @@ advanced:[
 
 
 {
-
 title:"📐 Geometry",
 desc:"Shapes and space",
-
 slides:{
 
 beginner:[
 "Geometry studies shapes.",
-"Shapes have sides and corners.",
-"Squares and triangles are examples."
+"Shapes have sides and angles.",
+"Triangles have 3 sides.",
+"Squares have 4 equal sides.",
+"Circles have no corners.",
+"Learn shape names.",
+"Identify shapes.",
+"Challenge."
 ],
 
 intermediate:[
-"Geometry uses measurements.",
-"Learn shape formulas.",
-"Calculate angles."
+"Calculate angles.",
+"Use shape formulas.",
+"Find missing lengths.",
+"Study properties.",
+"Work with symmetry.",
+"Solve geometry problems.",
+"Practice.",
+"Complete."
 ],
 
 advanced:[
 "Geometry uses proofs.",
-"Study transformations.",
-"Used in engineering."
-]
-
-}
-
-},
-
-
-{
-
-title:"📏 Measurement",
-desc:"Measure objects",
-
-slides:{
-
-beginner:[
-"Measurement compares sizes.",
-"Units include metres and centimetres.",
-"Use measuring tools."
-],
-
-intermediate:[
-"Convert between units.",
-"Calculate length and area.",
-"Use correct units."
-],
-
-advanced:[
-"Precision is important.",
-"Use scientific measurements.",
-"Apply formulas."
-]
-
-}
-
-},
-
-
-{
-
-title:"📍 Coordinates",
-desc:"Maps and grids",
-
-slides:{
-
-beginner:[
-"Coordinates show positions.",
-"They use (x,y).",
-"The first number moves sideways."
-],
-
-intermediate:[
-"Plot points on graphs.",
-"Create shapes.",
-"Use axes correctly."
-],
-
-advanced:[
-"Coordinate geometry uses formulas.",
-"Calculate distance.",
-"Find gradients."
-]
-
-}
-
-},
-
-
-{
-
-title:"📈 Graphs",
-desc:"Read data",
-
-slides:{
-
-beginner:[
-"Graphs show information.",
-"Bar graphs compare things.",
-"Read labels."
-],
-
-intermediate:[
-"Use scales and data.",
-"Create graphs.",
-"Find trends."
-],
-
-advanced:[
-"Analyse complex data.",
-"Make predictions.",
-"Use statistics."
-]
-
-}
-
-},
-
-
-{
-
-title:"🎲 Probability",
-desc:"Chance and events",
-
-slides:{
-
-beginner:[
-"Probability is chance.",
-"Impossible = 0.",
-"Certain = 1."
-],
-
-intermediate:[
-"Probability uses fractions.",
-"Calculate outcomes.",
-"Run experiments."
-],
-
-advanced:[
-"Probability uses formulas.",
-"Analyse random events.",
-"Used in statistics."
-]
-
-}
-
-},
-
-
-{
-
-title:"📋 Statistics",
-desc:"Data and averages",
-
-slides:{
-
-beginner:[
-"Statistics studies data.",
-"Collect information.",
-"Compare results."
-],
-
-intermediate:[
-"Mean is the average.",
-"Median is the middle.",
-"Mode is most common."
-],
-
-advanced:[
-"Analyse datasets.",
-"Use statistical models.",
-"Interpret results."
-]
-
-}
-
-},
-
-
-{
-
-title:"🔺 Angles",
-desc:"Turns and corners",
-
-slides:{
-
-beginner:[
-"Angles measure turns.",
-"Right angle = 90°.",
-"Angles use degrees."
-],
-
-intermediate:[
-"Learn acute and obtuse angles.",
-"Use angle rules.",
-"Find missing angles."
-],
-
-advanced:[
-"Use angle proofs.",
-"Solve complex diagrams.",
-"Apply trigonometry."
-]
-
-}
-
-},
-
-
-{
-
-title:"📦 Area",
-desc:"Space inside shapes",
-
-slides:{
-
-beginner:[
-"Area measures inside a shape.",
-"Rectangle = length × width.",
-"Use square units."
-],
-
-intermediate:[
-"Calculate areas of shapes.",
-"Use formulas.",
-"Compare sizes."
-],
-
-advanced:[
-"Complex shapes use multiple formulas.",
-"Apply geometry rules.",
-"Solve real problems."
-]
-
-}
-
-},
-
-
-{
-
-title:"🟦 Perimeter",
-desc:"Distance around shapes",
-
-slides:{
-
-beginner:[
-"Perimeter is around a shape.",
-"Add all sides together.",
-"Use units."
-],
-
-intermediate:[
-"Find missing sides.",
-"Use formulas.",
-"Compare shapes."
-],
-
-advanced:[
-"Use algebra with perimeter.",
-"Solve unknown lengths.",
-"Apply geometry."
-]
-
-}
-
-},
-
-
-{
-
-title:"🧊 Volume",
-desc:"3D space",
-
-slides:{
-
-beginner:[
-"Volume measures 3D space.",
-"Cubes have length × width × height.",
-"Use cubic units."
-],
-
-intermediate:[
-"Calculate prism volumes.",
-"Use formulas.",
-"Convert units."
-],
-
-advanced:[
-"Advanced volume uses complex shapes.",
-"Apply geometry.",
-"Solve real-world problems."
-]
-
-}
-
-},
-
-
-{
-
-title:"🔤 Algebra",
-desc:"Letters and equations",
-
-slides:{
-
-beginner:[
-"Algebra uses letters for numbers.",
-"x + 2 = 5.",
-"Find x."
-],
-
-intermediate:[
-"Solve multi-step equations.",
-"Use inverse operations.",
-"Check answers."
-],
-
-advanced:[
-"Advanced algebra uses variables.",
-"Solve complex equations.",
-"Use functions."
-]
-
-}
-
-},
-
-
-{
-
-title:"🧠 Problem Solving",
-desc:"Solve maths challenges",
-
-slides:{
-
-beginner:[
-"Read the problem.",
-"Choose an operation.",
-"Check your answer."
-],
-
-intermediate:[
-"Break problems into steps.",
-"Find patterns.",
-"Explain your thinking."
-],
-
-advanced:[
-"Use multiple strategies.",
-"Test solutions.",
-"Prove answers."
+"Transformations move shapes.",
+"Use coordinate geometry.",
+"Apply formulas.",
+"Solve complex problems.",
+"Use reasoning.",
+"Advanced challenge.",
+"Finished."
 ]
 
 }
 
 }
-
 
 ];
 
 
 
-// VARIABLES
+let chosen=0;
 
-let selectedLesson=0;
-let currentSlide=0;
-let currentLevel="beginner";
+let level="beginner";
 
-
+let slide=0;
 
 
-// MAKE CARDS
 
-function createCards(){
+const cards=document.getElementById("lessonCards");
 
-let box=document.getElementById("lessonCards");
 
 lessons.forEach((lesson,index)=>{
 
 
 let card=document.createElement("div");
 
+
 card.className="lesson-card";
 
 
 card.innerHTML=
-
-"<h3>"+lesson.title+"</h3>"+
-"<p>"+lesson.desc+"</p>";
+`
+<h3>${lesson.title}</h3>
+<p>${lesson.desc}</p>
+`;
 
 
 card.onclick=function(){
 
-selectedLesson=index;
+chosen=index;
 
 
 document.getElementById("lessonPage").classList.add("hidden");
@@ -1083,29 +998,24 @@ document.getElementById("lessonPage").classList.add("hidden");
 document.getElementById("levelPage").classList.remove("hidden");
 
 
-document.getElementById("levelTitle").innerHTML=
-
-lesson.title+"<br>Choose Skill Level";
+document.getElementById("chosenLesson").innerHTML=
+lesson.title;
 
 };
 
 
-box.appendChild(card);
+cards.appendChild(card);
 
 
 });
 
 
-}
 
+function startLesson(selectedLevel){
 
+level=selectedLevel;
 
-
-function startLesson(level){
-
-currentLevel=level;
-
-currentSlide=0;
+slide=0;
 
 
 document.getElementById("levelPage").classList.add("hidden");
@@ -1119,45 +1029,39 @@ showSlide();
 
 
 
-
 function showSlide(){
 
-let lesson=lessons[selectedLesson];
+let lesson=lessons[chosen];
 
-let slides=lesson.slides[currentLevel];
+let slides=lesson.slides[level];
 
 
 document.getElementById("lessonTitle").innerHTML=
+lesson.title+" - "+level;
 
-lesson.title+" - "+currentLevel;
 
-
-document.getElementById("slide").innerHTML=
-
-slides[currentSlide];
+document.getElementById("slideContent").innerHTML=
+slides[slide];
 
 
 document.getElementById("progress").innerHTML=
-
-"Slide "+(currentSlide+1)+" / "+slides.length;
+"Slide "+(slide+1)+" / "+slides.length;
 
 }
-
 
 
 
 function nextSlide(){
 
-let slides=
-lessons[selectedLesson].slides[currentLevel];
+slide++;
 
 
-currentSlide++;
+let slides=lessons[chosen].slides[level];
 
 
-if(currentSlide>=slides.length){
+if(slide>=slides.length){
 
-currentSlide=0;
+slide=0;
 
 }
 
@@ -1165,22 +1069,20 @@ currentSlide=0;
 showSlide();
 
 }
-
 
 
 
 function previousSlide(){
 
-let slides=
-lessons[selectedLesson].slides[currentLevel];
+slide--;
 
 
-currentSlide--;
+let slides=lessons[chosen].slides[level];
 
 
-if(currentSlide<0){
+if(slide<0){
 
-currentSlide=slides.length-1;
+slide=slides.length-1;
 
 }
 
@@ -1188,7 +1090,6 @@ currentSlide=slides.length-1;
 showSlide();
 
 }
-
 
 
 
@@ -1201,14 +1102,7 @@ document.getElementById("lessonPage").classList.remove("hidden");
 }
 
 
-
-
-createCards();
-
-
 </script>
 
-
 </body>
-
 </html>
